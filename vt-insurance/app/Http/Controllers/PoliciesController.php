@@ -21,6 +21,7 @@ class PoliciesController extends Controller
     public function create()
     {
         //
+        return view('policies.create');
     }
 
     /**
@@ -28,7 +29,17 @@ class PoliciesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate input 
+        $request->validate([
+            'policy_name' => 'required',
+            'policy_coverage' => 'required'
+        ]);
+
+        //create a new policy
+        Policies::create($request->all());
+
+        //redirect
+        return redirect()->route('policies.index')->with('success', 'Policy Created Successfully');
     }
 
     /**
