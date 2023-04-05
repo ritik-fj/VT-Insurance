@@ -22,5 +22,9 @@ Route::get('/policies/create', function () {
     return view('policies.create');
 });
 
+Route::get('/policies/index', function () {
+    return view('policies.index');
+});
+
 
 Route::resource('policies', PoliciesController::class);

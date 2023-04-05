@@ -30,8 +30,8 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown">Policies</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/policies/create') }}">View Policies</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/policies/create') }}">Create Policies</a></li>
+                            <li><a class="dropdown-item" href="{{ route('policies.index') }}">View Policies</a></li>
+                            <li><a class="dropdown-item" href="{{ route('policies.create') }}">Create Policies</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

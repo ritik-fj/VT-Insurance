@@ -2,7 +2,16 @@
 @section('title', 'Create Policy')
 
 @section('content')
-    <h1 class="p-5 mt-5">Create Policy</h1>
+    <div class="row">
+        <div class="col">
+            <div class="float-start">
+                <h2>Create New Policies</h2>
+            </div>
+            <div class="float-end">
+                <a class="btn btn-success" href="{{ route('policies.index') }}"> View All Policy</a>
+            </div>
+        </div>
+    </div>
     <div class="container p-5 my-3 border">
 
         @if ($errors->any())

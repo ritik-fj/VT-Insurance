@@ -12,7 +12,12 @@ class PoliciesController extends Controller
      */
     public function index()
     {
-        //
+        // assigns policy data to variable
+        $policies = Policies::all();
+
+        // $policies = 'this is a test';
+
+        return view('policies.index', ['policies' => $policies]);
     }
 
     /**
@@ -20,7 +25,7 @@ class PoliciesController extends Controller
      */
     public function create()
     {
-        //
+        // returns to the create view
         return view('policies.create');
     }
 
