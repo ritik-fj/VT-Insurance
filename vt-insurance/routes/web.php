@@ -29,3 +29,7 @@ Route::get('/policies/index', function () {
 
 
 Route::resource('policies', PoliciesController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
