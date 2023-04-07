@@ -60,24 +60,43 @@ class PoliciesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Policies $policies)
+    public function edit($id)
     {
-        //
+        $policies = Policies::find($id);
+        return view('policies.edit', compact('policies'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Policies $policies)
+    public function update(Request $request, $id)
     {
-        //
+        //validate input 
+        $request->validate([
+            'policy_name' => 'required',
+            'policy_coverage' => 'required'
+        ]);
+
+        //finds and updates records
+        $policies = Policies::find($id);
+        $policies->policy_name = $request->input('policy_name');
+        $policies->policy_coverage = $request->input('policy_coverage');
+        $policies->save();
+
+        //redirect
+        return redirect()->route('policies.index')->with('success', 'Policy Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Policies $policies)
+    public function destroy($id)
     {
-        //
+        //deletes the record
+        $policies = Policies::find($id);
+        $policies->delete();
+
+        //redirect
+        return redirect()->route('policies.index')->with('success', 'Policy Deleted Successfully');
     }
 }

@@ -17,19 +17,8 @@
     </div>
 
     <div class="row">
-        <div class="col">
-            <div class="form-group">
-                <strong>Name: </strong>
-                {{ $policies->policy_name }}
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-group">
-                <strong>Coverage: </strong>
-                {{ $policies->policy_coverage }}
-            </div>
-        </div>
-
+        <h1 class="display-4">{{ $policies->policy_name }}</h1>
+        <strong class="lead">Coverage: {{ $policies->policy_coverage }}</strong>
     </div>
-    <br><br><br>
+
 @stop

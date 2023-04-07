@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 <!-- @section('sidebar')
-                                                                                                                                                                                                                                                                                                                                                                        @parent -->
+                                                                                                                                                                                                                                                                                                                                                                            @parent -->
 
     <!-- <p>This is appended to the master sidebar.</p> -->
 <!-- @stop -->
@@ -78,7 +78,7 @@
                         nation will be incomparable. Protecting yourself, your family, and your assets is important. We
                         offer a wide range of insurance options to help you find the coverage you need.</p>
                     <div class="text-center">
-                        <a href="#" class="btn btn-primary">
+                        <a href="{{ route('policies.index') }}" class="btn btn-primary">
                             View Our Policies</a>
                     </div>
 

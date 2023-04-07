@@ -30,9 +30,11 @@
                         <a class="nav-link dropdown-toggle lead" href="#" role="button"
                             data-bs-toggle="dropdown">Policies</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item lead" href="{{ route('policies.index') }}">View Policies</a>
+                            <li><a class="dropdown-item lead " style="font-size: 15px;"
+                                    href="{{ route('policies.index') }}">View Policies</a>
                             </li>
-                            <li><a class="dropdown-item lead" href="{{ route('policies.create') }}">Create Policies</a>
+                            <li><a class="dropdown-item lead" style="font-size: 15px;"
+                                    href="{{ route('policies.create') }}">Create Policies</a>
                             </li>
                         </ul>
                     </li>
@@ -55,7 +57,7 @@
         @yield('content')
     </div>
 
-    <footer class="bg-dark text-white py-4">
+    <footer class="bg-dark text-white py-4 footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 ">
