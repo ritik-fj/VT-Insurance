@@ -4,10 +4,10 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <div class="float-start">
+            <div class="float-start px-4 pt-2">
                 <h2>Create New Policies</h2>
             </div>
-            <div class="float-end">
+            <div class="float-end p-2">
                 <a class="btn btn-success" href="{{ route('policies.index') }}"> View All Policy</a>
             </div>
         </div>
@@ -27,8 +27,8 @@
         @endif
         <form action="{{ route('policies.store') }}" method="POST">
             @csrf
-            <div class="input-group">
-                <span class="input-group-text">Policy Name</span>
+            <div class="mb-3">
+                <label class="form-label">Policy Name</label>
                 <input type="text" class="form-control" name="policy_name" placeholder="Enter Policy Name">
             </div>
             {{-- <div class="form-check">
@@ -41,9 +41,9 @@
             </div> --}}
 
 
-            <div class="input-group">
-                <span class="input-group-text">Policy Coverage</span>
-                <input type="text" class="form-control" name="policy_coverage" placeholder="Enter Policy Coverage">
+            <div class="mb-3">
+                <label class="form-label">Policy Coverage</label>
+                <textarea class="form-control" rows="5" name="policy_coverage" placeholder="Enter Policy Coverage"></textarea>
             </div>
 
 

@@ -6,10 +6,10 @@
 
     <div class="row">
         <div class="col">
-            <div class="float-start">
+            <div class="float-start px-4 pt-2">
                 <h2>View All Policies</h2>
             </div>
-            <div class="float-end">
+            <div class="float-end p-2">
                 <a class="btn btn-success" href="{{ route('policies.create') }}"> Create New Policy</a>
             </div>
         </div>
@@ -22,7 +22,7 @@
     @endif
 
     <hr class="featurette-divider">
-    <div class="container mt-5">
+    <div class="container p-5">
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr>
@@ -35,8 +35,8 @@
                     <tr>
                         <td>{{ $policy->policy_name }}</td>
                         <td>{{ $policy->policy_coverage }}</td>
-                        <td>
-                            <form action="{{ route('policies.destroy', $policy->id) }}"" method="POST">
+                        <td class="text-center">
+                            <form action="{{ route('policies.destroy', $policy->id) }}" method="POST">
                                 <a class="btn btn-info" href="{{ route('policies.show', $policy->id) }}"> Show</a>
                                 <a class="btn btn-primary" href="{{ route('policies.edit', $policy->id) }}"> Edit</a>
                                 @csrf

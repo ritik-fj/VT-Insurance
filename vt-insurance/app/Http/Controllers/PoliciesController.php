@@ -50,10 +50,12 @@ class PoliciesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Policies $policies)
+    public function show($id)
     {
-        //
+        $policies = Policies::findOrFail($id);
+        return view('policies.show', compact('policies'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

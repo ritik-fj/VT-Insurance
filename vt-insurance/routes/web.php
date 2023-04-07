@@ -27,4 +27,5 @@ Route::get('/policies/index', function () {
 });
 
 
+
 Route::resource('policies', PoliciesController::class);
