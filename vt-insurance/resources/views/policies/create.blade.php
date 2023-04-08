@@ -27,22 +27,20 @@
         <form class="lead" action="{{ route('policies.store') }}" method="POST">
             @csrf
             <div class="mb-3">
-                <label class="form-label"> <strong> Policy Name</strong></label>
-                <input type="text" class="form-control" name="policy_name" placeholder="Enter Policy Name">
+                <label class="form-label"> <strong> Policy Type</strong></label>
+                <input type="text" class="form-control" name="policy_type" placeholder="Enter Policy Name">
             </div>
-            {{-- <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="collisionCover" name="CollisionCover" value="Yes">
-                <label class="form-check-label" for="collisionCover">Collision Cover</label>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="fireDamage" name="fireDamage" value="Yes">
-                <label class="form-check-label" for="fireDamage">Fire Damage</label>
-            </div> --}}
-
-
             <div class="mb-3">
-                <label class="form-label"> <strong>Policy Coverage</strong></label>
-                <textarea class="form-control" rows="5" name="policy_coverage" placeholder="Enter Policy Coverage"></textarea>
+                <label class="form-label"> <strong>Coverage Amount</strong></label>
+                <input type="text" class="form-control" name="coverage_amount" placeholder="Enter Coverage Amount">
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> <strong>Premium Amount</strong></label>
+                <input type="text" class="form-control" name="premium_amount" placeholder="Enter Policy Amount">
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> <strong> Policy Duration</strong></label>
+                <input type="text" class="form-control" name="policy_duration" placeholder="Enter Policy Duration">
             </div>
 
             <div class="text-center">

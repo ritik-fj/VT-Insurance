@@ -44,6 +44,10 @@
                             <a class="nav-link active " aria-current="page"
                                 href="{{ route('policies.index') }}">Policies</a>
                         </li>
+                        <li class="nav-item lead">
+                            <a class="nav-link active " aria-current="page"
+                                href="{{ route('customers.index') }}">Customers</a>
+                        </li>
 
                     </ul>
 
@@ -87,11 +91,11 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-2">
             @yield('content')
         </main>
         <br><br>
-        <footer class="bg-light  footer border">
+        <footer class="bg-dark text-light footer border">
             <div class="container">
                 <div class="row">
                     <div class="col">

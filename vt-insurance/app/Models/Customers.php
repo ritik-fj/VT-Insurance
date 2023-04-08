@@ -5,15 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Policies extends Model
+class Customers extends Model
 {
     use HasFactory;
 
     protected $fillable = [
 
-        'policy_type',
-        'coverage_amount',
-        'premium_amount',
-        'policy_duration'
+        'customer_fname',
+        'customer_lname',
+        'customer_dob',
+        'customer_address',
+        'customer_email',
+        'customer_phone'
     ];
 }

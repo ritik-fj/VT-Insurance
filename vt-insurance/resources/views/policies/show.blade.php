@@ -4,21 +4,20 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row p-4">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Show Policy</h2>
-            </div>
+
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('policies.index') }}">Back</a>
             </div>
 
         </div>
     </div>
-
-    <div class="row">
-        <h1 class="display-4">{{ $policies->policy_name }}</h1>
-        <strong class="lead">Coverage: {{ $policies->policy_coverage }}</strong>
+    <div class="row p-4 text-center">
+        <h1 class="display-4">{{ $policies->policy_type }}</h1>
+        <strong class="lead">Coverage Amount: {{ $policies->coverage_amount }}</strong>
+        <strong class="lead">Premium Amount: {{ $policies->premium_amount }}</strong>
+        <strong class="lead">Policy Duration: {{ $policies->policy_duration }}</strong>
     </div>
 
 @stop

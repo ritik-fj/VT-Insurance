@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\PoliciesController;
+use App\Http\Controllers\CustomersController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +27,11 @@ Route::get('/policies/create', function () {
 Route::get('/policies/index', function () {
     return view('policies.index');
 });
+Route::get('/customers/index', function () {
+    return view('customers.index');
+});
 
+Route::resource('customers', CustomersController::class);
 
 
 Route::resource('policies', PoliciesController::class);

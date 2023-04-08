@@ -36,8 +36,10 @@ class PoliciesController extends Controller
     {
         //validate input 
         $request->validate([
-            'policy_name' => 'required',
-            'policy_coverage' => 'required'
+            'policy_type' => 'required',
+            'coverage_amount' => 'required',
+            'premium_amount' => 'required',
+            'policy_duration' => 'required'
         ]);
 
         //create a new policy
@@ -73,14 +75,18 @@ class PoliciesController extends Controller
     {
         //validate input 
         $request->validate([
-            'policy_name' => 'required',
-            'policy_coverage' => 'required'
+            'policy_type' => 'required',
+            'coverage_amount' => 'required',
+            'premium_amount' => 'required',
+            'policy_duration' => 'required'
         ]);
 
         //finds and updates records
         $policies = Policies::find($id);
-        $policies->policy_name = $request->input('policy_name');
-        $policies->policy_coverage = $request->input('policy_coverage');
+        $policies->policy_type = $request->input('policy_type');
+        $policies->coverage_amount = $request->input('coverage_amount');
+        $policies->premium_amount = $request->input('premium_amount');
+        $policies->policy_duration = $request->input('policy_duration');
         $policies->save();
 
         //redirect

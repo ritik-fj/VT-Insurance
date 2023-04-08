@@ -28,13 +28,24 @@
             @csrf
             @method('PUT')
             <div class="mb-3">
-                <label class="form-label"> <strong> Policy Name</strong></label>
-                <input type="text" class="form-control" value="{{ $policies->policy_name }}" name="policy_name"
-                    placeholder="Enter Policy Name">
+                <label class="form-label"> <strong> Policy Type</strong></label>
+                <input type="text" class="form-control" value="{{ $policies->policy_type }}" name="policy_type"
+                    placeholder="Enter Policy Type">
             </div>
             <div class="mb-3">
-                <label class="form-label"> <strong>Policy Coverage</strong></label>
-                <textarea class="form-control" rows="5" name="policy_coverage" placeholder="Enter Policy Coverage">{{ $policies->policy_coverage }}</textarea>
+                <label class="form-label"> <strong>Coverage Amount</strong></label>
+                <input type="text" class="form-control" {{ $policies->coverage_amount }} name="coverage_amount"
+                    placeholder="Enter Coverage Amount">
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> <strong>Premium Amount</strong></label>
+                <input type="text" class="form-control" value="{{ $policies->premium_amount }}" name="premium_amount"
+                    placeholder="Enter Policy Amount">
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> <strong> Policy Duration</strong></label>
+                <input type="text" class="form-control" value="{{ $policies->policy_duration }}" name="policy_duration"
+                    placeholder="Enter Policy Duration">
             </div>
 
             <div class="text-center">
