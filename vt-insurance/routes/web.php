@@ -39,3 +39,5 @@ Route::resource('policies', PoliciesController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/reports/customers', [CustomersController::class, 'generatePDF'])->name('customers.pdf');

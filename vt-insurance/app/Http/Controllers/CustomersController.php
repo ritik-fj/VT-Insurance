@@ -5,10 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Customers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-
+use Barryvdh\DomPDF\PDF;
 
 class CustomersController extends Controller
 {
+    public function generatePDF()
+    {
+        $customers = Customers::select('customer_fname', 'customer_lname', 'customer_dob', 'customer_address', 'customer_email', 'customer_phone')->get();
+        $pdf = app('dompdf.wrapper')->loadView('reports.customers', compact('customers'));
+
+        return $pdf->download('customers.pdf');
+    }
+
     /**
      * Display a listing of the resource.
      */

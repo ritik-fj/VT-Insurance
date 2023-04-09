@@ -34,7 +34,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label"> <strong>Coverage Amount</strong></label>
-                <input type="text" class="form-control" {{ $policies->coverage_amount }} name="coverage_amount"
+                <input type="text" class="form-control" value="{{ $policies->coverage_amount }}" name="coverage_amount"
                     placeholder="Enter Coverage Amount">
             </div>
             <div class="mb-3">

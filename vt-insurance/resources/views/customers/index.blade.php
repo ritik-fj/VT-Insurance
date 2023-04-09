@@ -24,6 +24,7 @@
     @endif
 
     <hr class="featurette-divider">
+    <a href="{{ route('customers.pdf') }}" target="_blank" class="btn btn-primary">Generate PDF</a>
     <div class="container p-2">
         <table class="table table-bordered">
             <thead class="thead-dark">
@@ -46,7 +47,8 @@
                                     Edit</a>
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button onclick="return confirm('Are you sure you want to delete this customer?')"
+                                    type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </td>
                     </tr>

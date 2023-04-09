@@ -48,7 +48,8 @@
                                     Edit</a>
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button onclick="return confirm('Are you sure you want to delete this policy?')"
+                                    type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </td>
                     </tr>
