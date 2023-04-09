@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Customers;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+
 
 class CustomersController extends Controller
 {
@@ -39,10 +41,11 @@ class CustomersController extends Controller
             'customer_lname' => 'required',
             'customer_dob' => 'required',
             'customer_address' => 'required',
-            'customer_email' => 'required',
-            'customer_phone' => 'required'
+            'customer_email' => 'required|email|unique:customers,customer_email',
+            'customer_phone' => 'required|unique:customers,customer_phone'
 
         ]);
+
 
         //create a new customer
         Customers::create($request->all());
@@ -81,8 +84,16 @@ class CustomersController extends Controller
             'customer_lname' => 'required',
             'customer_dob' => 'required',
             'customer_address' => 'required',
-            'customer_email' => 'required',
-            'customer_phone' => 'required'
+            'customer_email' => [
+                'required',
+                'email',
+                Rule::unique('customers')->ignore($id),
+            ],
+            'customer_phone' => [
+                'required',
+                'numeric',
+                Rule::unique('customers')->ignore($id),
+            ],
         ]);
 
         //finds and updates records

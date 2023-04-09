@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('customer_dob');
             $table->string('customer_address');
             $table->string('customer_email')->unique();
-            $table->string('customer_phone');
+            $table->string('customer_phone')->unique();;
             $table->timestamps();
         });
     }

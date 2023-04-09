@@ -45,10 +45,16 @@
             <div class="mb-3">
                 <label class="form-label"> <strong>Email Address</strong></label>
                 <input type="email" class="form-control" name="customer_email" placeholder="Enter Email">
+                @error('customer_email')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label class="form-label"> <strong>Phone</strong></label>
                 <input type="text" class="form-control" name="customer_phone" placeholder="Enter Phone Number">
+                @error('customer_phone')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="text-center">
