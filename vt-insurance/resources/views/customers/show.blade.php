@@ -17,7 +17,7 @@
         {{-- <h1 class="display-4">{{ $customers->policy_type }}</h1> --}}
         <strong class="lead">First Name: {{ $customers->customer_fname }}</strong>
         <strong class="lead">Last Name: {{ $customers->customer_lname }}</strong>
-        <strong class="lead">Date of Birth: {{ $customers->customer_dob }}</strong>
+        <strong class="lead">Date Of Birth: {{ $customers->customer_dob }}</strong>
         <strong class="lead">Address: {{ $customers->customer_address }}</strong>
         <strong class="lead">Email: {{ $customers->customer_email }}</strong>
         <strong class="lead">Phone: {{ $customers->customer_phone }}</strong>
