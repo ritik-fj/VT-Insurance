@@ -16,4 +16,8 @@ class Policies extends Model
         'premium_amount',
         'policy_duration'
     ];
+    public function customers()
+    {
+        return $this->belongsToMany(Customers::class)->withTimestamps();
+    }
 }

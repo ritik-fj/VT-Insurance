@@ -29,20 +29,29 @@
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr class="lead">
+                    <th></th>
+                    <th scope="col">ID</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
-                    <th scope="col">Email</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($customers as $customer)
                     <tr class="lead">
+                        <td>
+                            <a href="{{ route('customers.assign-policy', ['customer_id' => $customer->id]) }}"
+                                class="btn btn-primary">Assign Policy</a>
+                        </td>
+                        <td>{{ $customer->id }}</td>
                         <td>{{ $customer->customer_fname }}</td>
                         <td>{{ $customer->customer_lname }}</td>
-                        <td>{{ $customer->customer_email }}</td>
                         <td class="">
                             <form action="{{ route('customers.destroy', $customer->id) }}" method="POST">
                                 <a class="btn btn-info " href="{{ route('customers.show', $customer->id) }}"> Show</a>
+
+
+
+
                                 <a class="btn btn-primary " href="{{ route('customers.edit', $customer->id) }}">
                                     Edit</a>
                                 @csrf

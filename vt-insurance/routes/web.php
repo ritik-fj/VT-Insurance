@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PoliciesController;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\CustomerPolicyController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,3 +42,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/reports/customers', [CustomersController::class, 'generatePDF'])->name('customers.pdf');
+
+Route::get('/customers/assign-policy/{customer_id}', [CustomerPolicyController::class, 'assignPolicy'])->name('customers.assign-policy');
+Route::post('/customer-policies', [CustomerPolicyController::class, 'store']);

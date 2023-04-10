@@ -18,4 +18,9 @@ class Customers extends Model
         'customer_email',
         'customer_phone'
     ];
+
+    public function policies()
+    {
+        return $this->belongsToMany(Policy::class)->withTimestamps();
+    }
 }
