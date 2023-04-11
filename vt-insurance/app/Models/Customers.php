@@ -21,6 +21,6 @@ class Customers extends Model
 
     public function policies()
     {
-        return $this->belongsToMany(Policy::class)->withTimestamps();
+        return $this->belongsToMany(Policies::class)->withTimestamps();
     }
 }
