@@ -11,6 +11,7 @@ class Policies extends Model
 
     protected $fillable = [
 
+        'id',
         'policy_type',
         'coverage_amount',
         'premium_amount',

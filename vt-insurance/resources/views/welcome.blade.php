@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 <!-- @section('sidebar')
-                                                                                                                                                                                                                                                                                                                                                                                @parent -->
+                                                                                                                                                                                                                                                                                                                                                                                                @parent -->
 
     <!-- <p>This is appended to the master sidebar.</p> -->
 <!-- @stop -->
@@ -89,40 +89,8 @@
             </div>
         </div>
 
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title">Auto Insurance</h2>
-                            <p class="card-text">Get coverage for your car or other vehicles.</p>
-                            <a href="#" class="btn btn-primary">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title">Home Insurance</h2>
-                            <p class="card-text">Protect your home and belongings.</p>
-                            <a href="#" class="btn btn-primary">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title">Life Insurance</h2>
-                            <p class="card-text">Provide for your loved ones when you're gone.</p>
-                            <a href="#" class="btn btn-primary">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-4 p-5 rounded">
-            <div class="row border align-items-center">
+        <div class="mt-4 p-5 rounded container">
+            <div class="row border align-items-center bg-white">
                 <div class="col p-2">
                     <img src="{{ asset('images/insure.jpg') }}" alt="Insurance" class="img-fluid rounded-pill">
                 </div>

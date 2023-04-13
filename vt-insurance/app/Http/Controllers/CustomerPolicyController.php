@@ -6,6 +6,7 @@ use App\Models\CustomerPolicy;
 use App\Models\Customers;
 use App\Models\Policies;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CustomerPolicyController extends Controller
 {
@@ -26,6 +27,17 @@ class CustomerPolicyController extends Controller
 
         $customer_policy->save();
 
-        return redirect('/customers/' . $request->input('customer_id'));
+        return redirect('/customers/' . $request->input('customer_id') . '/policies');
+    }
+
+    public function showCustomerPolicies($customer_id)
+    {
+        $customer = Customers::findOrFail($customer_id);
+        $policies = DB::table('customer_policies')
+            ->join('policies', 'customer_policies.policy_id', '=', 'policies.id')
+            ->select('policies.id', 'policies.policy_type', 'policies.coverage_amount', 'policies.premium_amount', 'policies.policy_duration')
+            ->where('customer_policies.customer_id', '=', $customer_id)
+            ->get();
+        return view('show', compact('customer', 'policies'));
     }
 }

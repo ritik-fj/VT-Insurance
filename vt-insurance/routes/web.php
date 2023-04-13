@@ -45,3 +45,5 @@ Route::get('/reports/customers', [CustomersController::class, 'generatePDF'])->n
 
 Route::get('/customers/assign-policy/{customer_id}', [CustomerPolicyController::class, 'assignPolicy'])->name('customers.assign-policy');
 Route::post('/customer-policies', [CustomerPolicyController::class, 'store']);
+
+Route::get('/customers/{customer_id}/policies', [CustomerPolicyController::class, 'showCustomerPolicies'])->name('customers.policies_info');

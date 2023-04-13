@@ -9,9 +9,11 @@
             <div class="float-start px-5">
                 <h1 class="display-6">All Customers</h1>
             </div>
-            <div class="float-end px-5">
-                <a class="btn btn-success" href="{{ route('customers.create') }}"> Create New Customer</a>
+            <div class="px-5">
+                <a href="{{ route('customers.pdf') }}" target="_blank" class="btn btn-primary float-end">Generate PDF</a>
+
             </div>
+
         </div>
     </div>
 
@@ -24,12 +26,17 @@
     @endif
 
     <hr class="featurette-divider">
-    <a href="{{ route('customers.pdf') }}" target="_blank" class="btn btn-primary">Generate PDF</a>
+    <div class="">
+
+    </div>
     <div class="container p-2">
+        <div class="float-start ">
+            <a class="btn btn-success" href="{{ route('customers.create') }}"> Create New Customer</a>
+        </div>
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr class="lead">
-                    <th></th>
+
                     <th scope="col">ID</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
@@ -38,10 +45,6 @@
             <tbody>
                 @foreach ($customers as $customer)
                     <tr class="lead">
-                        <td>
-                            <a href="{{ route('customers.assign-policy', ['customer_id' => $customer->id]) }}"
-                                class="btn btn-primary">Assign Policy</a>
-                        </td>
                         <td>{{ $customer->id }}</td>
                         <td>{{ $customer->customer_fname }}</td>
                         <td>{{ $customer->customer_lname }}</td>
@@ -50,6 +53,8 @@
                                 <a class="btn btn-info " href="{{ route('customers.show', $customer->id) }}"> Show</a>
 
 
+                                <a href="{{ route('customers.policies_info', ['customer_id' => $customer->id]) }}"
+                                    class="btn btn-primary">View Policies</a>
 
 
                                 <a class="btn btn-primary " href="{{ route('customers.edit', $customer->id) }}">
