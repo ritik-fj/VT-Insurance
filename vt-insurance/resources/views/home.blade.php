@@ -17,6 +17,11 @@
                         @endif
 
                         {{ __('You are logged in!') }}
+
+                        <div class="mt-3 text-center">
+                            <a href="{{ route('customers.index') }}" class="btn btn-primary me-3">Manage Customers</a>
+                            <a href="{{ route('policies.index') }}" class="btn btn-primary">Manage Policies</a>
+                        </div>
                     </div>
                 </div>
             </div>

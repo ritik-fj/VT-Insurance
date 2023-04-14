@@ -21,27 +21,35 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/policies/create', function () {
-    return view('policies.create');
-});
-
-Route::get('/policies/index', function () {
-    return view('policies.index');
-});
-Route::get('/customers/index', function () {
-    return view('customers.index');
-});
-
-Route::resource('customers', CustomersController::class);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 
-Route::resource('policies', PoliciesController::class);
+
+// Route::resource('customers', CustomersController::class);
+// All Customers Routes
+Route::get('/customers', [CustomersController::class, 'index'])->name('customers.index')->middleware('auth');
+Route::get('/customers/create', [CustomersController::class, 'create'])->name('customers.create')->middleware('auth');
+Route::post('/customers', [CustomersController::class, 'store'])->name('customers.store')->middleware('auth');
+Route::get('/customers/{id}', [CustomersController::class, 'show'])->name('customers.show')->middleware('auth');
+Route::get('/customers/{id}/edit', [CustomersController::class, 'edit'])->name('customers.edit')->middleware('auth');
+Route::put('/customers/{id}', [CustomersController::class, 'update'])->name('customers.update')->middleware('auth');
+Route::delete('/customers/{id}', [CustomersController::class, 'destroy'])->name('customers.destroy')->middleware('auth');
+Route::get('/reports/customers', [CustomersController::class, 'generatePDF'])->name('customers.pdf')->middleware('auth');
+
+// All Policies Routes
+// Route::resource('policies', PoliciesController::class);
+Route::get('/policies', [PoliciesController::class, 'index'])->name('policies.index');
+Route::get('/policies/create', [PoliciesController::class, 'create'])->name('policies.create')->middleware('auth');
+Route::post('/policies', [PoliciesController::class, 'store'])->name('policies.store')->middleware('auth');
+Route::get('/policies/{id}', [PoliciesController::class, 'show'])->name('policies.show');
+Route::get('/policies/{id}/edit', [PoliciesController::class, 'edit'])->name('policies.edit')->middleware('auth');
+Route::put('/policies/{id}', [PoliciesController::class, 'update'])->name('policies.update')->middleware('auth');
+Route::delete('/policies/{id}', [PoliciesController::class, 'destroy'])->name('policies.destroy')->middleware('auth');
+
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/reports/customers', [CustomersController::class, 'generatePDF'])->name('customers.pdf');
 
 Route::get('/customers/assign-policy/{customer_id}', [CustomerPolicyController::class, 'assignPolicy'])->name('customers.assign-policy');
 Route::post('/customer-policies', [CustomerPolicyController::class, 'store']);
