@@ -62,7 +62,8 @@
 </head>
 
 <body>
-    <h1>Customers Report</h1>
+    <h1>VT Insurance</h1>
+    <h3>Customers Report</h3>
     <table>
         <thead>
             <tr>
