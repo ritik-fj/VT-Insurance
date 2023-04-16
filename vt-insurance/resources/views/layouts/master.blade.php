@@ -23,7 +23,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top ">
             <div class="container-fluid">
                 <a class="navbar-brand px-4" href="{{ url('/') }}">VT Insurance</a>
 
@@ -36,19 +36,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
                         <li class="nav-item lead">
-                            <a class="nav-link active " aria-current="page" href="{{ url('/') }}">Home</a>
+                            <a class="nav-link {{ Request::path() == '/' ? 'active' : '' }}"
+                                href="{{ url('/') }}">Home</a>
                         </li>
                         <li class="nav-item lead">
-                            <a class="nav-link active " aria-current="page"
-                                href="{{ route('policies.index') }}">Policies</a>
+                            <a class="nav-link {{ request()->routeIs('viewpolicies') ? 'active' : '' }}"
+                                href="{{ route('viewpolicies') }}">Policies</a>
                         </li>
                         <li class="nav-item lead">
-                            <a class="nav-link active " aria-current="page"
+                            <a class="nav-link {{ request()->routeIs('customers.index') ? 'active' : '' }}"
                                 href="{{ route('customers.index') }}">Customers</a>
                         </li>
-
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -61,11 +60,11 @@
                                 </li>
                             @endif
 
-                            @if (Route::has('register'))
+                            {{-- @if (Route::has('register'))
                                 <li class="nav-item lead">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @endif --}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -74,6 +73,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('home') }}">
+                                        {{ __('Admin Dashboard') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -91,7 +93,7 @@
             </div>
         </nav>
 
-        <main class="py-2">
+        <main class="py-2" style="margin-top: 70px;">
             @yield('content')
         </main>
         <br><br>

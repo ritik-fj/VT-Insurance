@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', ' View Customers')
+@section('title', " $customer->customer_fname's Policies")
 
 
 @section('content')

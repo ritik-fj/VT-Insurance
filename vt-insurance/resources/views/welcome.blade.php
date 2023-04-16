@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 <!-- @section('sidebar')
-                                                                                                                                                                                                                                                                                                                                                                                                @parent -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @parent -->
 
     <!-- <p>This is appended to the master sidebar.</p> -->
 <!-- @stop -->
@@ -18,7 +18,7 @@
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
                 <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+
             </div>
 
             <!-- The slideshow/carousel -->
@@ -27,26 +27,22 @@
                     <img src="{{ asset('images/accident.jpg') }}" alt="Motor Vehile Accident" class="d-block"
                         style="width:100%">
                     <div class="carousel-caption">
-                        <div class="bg-dark border rounded ">
-                            <h1 class="display-6">
-                                MOTOR VEHICLE INSURANCE
-                            </h1>
-                            <p class="lead">Accidents happen. Get your motor vehicle insured with us.</p>
+                        <div class="bg-dark border rounded " style="opacity: 0.9;">
+                            <h1 class="display-6 pt-2"><strong>MOTOR VEHICLE INSURANCE</strong></h1>
+                            <p class="lead">Drive with confidence knowing that you and your car are protected with our
+                                comprehensive car insurance. Don't let unexpected accidents ruin your journey, get insured
+                                today..</p>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item" data-bs-interval="3000">
-                    <img src="{{ asset('images/fire.jpg') }}" alt="Chicago" class="d-block" style="width:100%">
+                    <img src="{{ asset('images/car_insure.jpg') }}" alt="Happy Customer" class="d-block" style="width:100%">
                     <div class="carousel-caption">
-                        <h3>HOUSE INSURANCE</h3>
-                        <p>We will always be there to provide a shelter over your head. </p>
-                    </div>
-                </div>
-                <div class="carousel-item" data-bs-interval="3000">
-                    <img src="{{ asset('images/c3.jpg') }}" alt="New York" class="d-block" style="width:100%">
-                    <div class="carousel-caption">
-                        <h3>INSURANCES MATTER</h3>
-                        <p>It's better to be safe and insured from uncertain events, make your life easier. </p>
+                        <div class="bg-dark border rounded " style="opacity: 0.9;">
+                            <h1 class="display-6  pt-2"><strong> GET INSURED NOW</strong></h1>
+                            <p class="lead">Secure your ride and your peace of mind with our reliable car insurance
+                                coverage. We've got you covered so you can enjoy the road ahead.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -61,7 +57,7 @@
         </div>
 
         <div class="container">
-            <!-- Three columns of text below the carousel -->
+
 
 
             <!-- START THE FEATURETTES -->
@@ -69,7 +65,7 @@
             <hr class="featurette-divider">
             <br>
             <div class="row border align-items-center bg-white">
-                <div class="col  p-2">
+                <div class="col  p-3">
                     <h1 class="text-center display-5">We got you covered</h1>
                     <p class="lead">VT Insurance is a locally owned insurance company for FIjians.
                         Together we build this country we call our home and together we grow, for without you,
@@ -78,7 +74,7 @@
                         nation will be incomparable. Protecting yourself, your family, and your assets is important. We
                         offer a wide range of insurance options to help you find the coverage you need.</p>
                     <div class="text-center">
-                        <a href="{{ route('policies.index') }}" class="btn btn-primary">
+                        <a href="{{ route('viewpolicies') }}" class="btn btn-primary">
                             View Our Policies</a>
                     </div>
 
@@ -94,7 +90,7 @@
                 <div class="col p-2">
                     <img src="{{ asset('images/insure.jpg') }}" alt="Insurance" class="img-fluid rounded-pill">
                 </div>
-                <div class="col p-2">
+                <div class="col p-3">
                     <h1 class="display-5">Why Choose Us?</h1>
                     <ul class="lead">
                         <li>Flexible coverage options</li>

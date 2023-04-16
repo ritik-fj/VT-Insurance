@@ -59,10 +59,12 @@
             text-decoration: underline;
         }
     </style>
+
 </head>
 
 <body>
     <h1>VT Insurance</h1>
+    <hr>
     <h3>Customers Report</h3>
     <table>
         <thead>
@@ -88,6 +90,14 @@
             @endforeach
         </tbody>
     </table>
+    <hr>
+    <div>
+        <h1 class="display-6 text-center"><small>Contact Us</small> </h1>
+        <p class="lead text-center" style="font-size: 15px;"><small>Address: Kaunikuila House,
+                <br> Laucala Bay Road,, Honson St, Suva
+                <br> <br> Phone: (+679) 999-9999<br>Email: info@vtinsurance.com.fj</small>
+        </p>
+    </div>
 </body>
 
 </html>

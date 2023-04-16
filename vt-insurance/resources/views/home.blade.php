@@ -1,13 +1,15 @@
 @extends('layouts.master')
 
-@section('title', 'Login')
+@section('title', 'Admin Dashboard')
 
 @section('content')
-    <div class="container">
+    <div class="container lead">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header">
+                        <h1 class="display-6 text-center">Welcome to the Admin Dashboard</h1>
+                    </div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -16,15 +18,55 @@
                             </div>
                         @endif
 
-                        {{ __('You are logged in!') }}
 
-                        <div class="mt-3 text-center">
-                            <a href="{{ route('customers.index') }}" class="btn btn-primary me-3">Manage Customers</a>
-                            <a href="{{ route('policies.index') }}" class="btn btn-primary">Manage Policies</a>
+
+                        <div class="row justify-content-center align-items-center g-2">
+                            <div class="col p-3">
+                                <div class="card text-center text-white" style="background-color: #184949">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Customers</h5>
+                                        <p class="card-text">We currently have <span
+                                                class="fw-bold">{{ $customersCount }}</span>
+                                            customers.</p>
+                                        <a href="{{ route('customers.index') }}" class="btn btn-info me-3">Manage
+                                            Customers</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card text-center text-white" style="background-color: #184949">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Policies</h5>
+                                        <p class="card-text">We currently have <span
+                                                class="fw-bold">{{ $policiesCount }}</span>
+                                            policies.</p>
+                                        <a href="{{ route('policies.index') }}" class="btn btn-info">Manage Policies</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row justify-content-center align-items-center g-2">
+                                <div class="col">
+                                    <div class="card text-center bg-info text-white">
+                                        <a href="{{ route('register') }}" class="btn">
+                                            <div class="card-body">
+                                                <h5 class="lead" style="font-size: 25px"><strong> Register New User
+                                                    </strong></h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
+
+
                 </div>
             </div>
         </div>
     </div>
+
 @endsection

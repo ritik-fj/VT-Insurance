@@ -20,6 +20,16 @@ class PoliciesController extends Controller
         return view('policies.index', ['policies' => $policies]);
     }
 
+    public function viewpolicies()
+    {
+        // assigns policy data to variable
+        $policies = Policies::all();
+
+        // $policies = 'this is a test';
+
+        return view('policies.viewpolicies', ['policies' => $policies]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

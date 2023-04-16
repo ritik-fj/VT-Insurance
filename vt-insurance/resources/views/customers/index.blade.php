@@ -29,11 +29,11 @@
     <div class="">
 
     </div>
-    <div class="container p-2">
-        <div class="float-start ">
+    <div class="container ">
+        <div class="float-end pb-2">
             <a class="btn btn-success" href="{{ route('customers.create') }}"> Create New Customer</a>
         </div>
-        <table class="table table-bordered">
+        <table class="table table-bordered bg-white">
             <thead class="thead-dark">
                 <tr class="lead">
 
