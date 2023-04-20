@@ -44,10 +44,10 @@
                             <a class="nav-link {{ request()->routeIs('viewpolicies') ? 'active' : '' }}"
                                 href="{{ route('viewpolicies') }}">Policies</a>
                         </li>
-                        <li class="nav-item lead">
+                        {{-- <li class="nav-item lead">
                             <a class="nav-link {{ request()->routeIs('customers.index') ? 'active' : '' }}"
                                 href="{{ route('customers.index') }}">Customers</a>
-                        </li>
+                        </li> --}}
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -98,10 +98,11 @@
         </main>
         <br><br>
         <footer class="bg-dark text-light footer border">
-            <div class="container">
+            <div class="container mt-3">
                 <div class="row">
                     <div class="col">
-                        <h1 class="display-6 text-center"><small>Contact Us</small> </h1>
+                        <h1 class="display-6 text-center" style="font-size: 25px;"><small>Contact Us</small> </h1>
+                        <hr>
                         <p class="lead text-center" style="font-size: 15px;"><small>Address: Kaunikuila House,
                                 <br> Laucala Bay Road,, Honson St, Suva
                                 <br> <br> Phone: (+679) 999-9999<br>Email: info@vtinsurance.com.fj</small>
@@ -111,7 +112,8 @@
                     <div class="col"></div>
 
                     <div class="col">
-                        <h5 class="display-6 text-center"><small>About Us</small> </h5>
+                        <h5 class="display-6 text-center" style="font-size: 25px;"><small>About Us</small> </h5>
+                        <hr>
                         <p class="lead text-center" style="font-size: 15px;"><small> VT Insurance is committed to
                                 providing
                                 our
@@ -125,7 +127,7 @@
                         </p>
                     </div>
                 </div>
-                <p class="text-center" style="font-size: 13px;">Copyright © 2023 vtinsurance.com
+                <p class="text-center" style="font-size: 13px;">Copyright © 2023. VT Insurance
                 </p>
             </div>
         </footer>

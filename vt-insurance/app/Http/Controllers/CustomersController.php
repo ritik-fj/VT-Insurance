@@ -6,9 +6,22 @@ use App\Models\Customers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Barryvdh\DomPDF\PDF;
+use Illuminate\Support\Facades\DB;
 
 class CustomersController extends Controller
 {
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('policy_type');
+
+        $customers = DB::table('customers')
+            ->where('customer_fname', 'like', '%' . $searchTerm . '%')
+            ->get();
+
+        return view('customers.index', ['customers' => $customers]);
+    }
+
     public function generatePDF()
     {
         $customers = Customers::select('customer_fname', 'customer_lname', 'customer_dob', 'customer_address', 'customer_email', 'customer_phone')->get();
@@ -20,13 +33,21 @@ class CustomersController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // assigns customer data to variable
-        $customers = Customers::all();
+        // Retrieve the search term from the request object
+        $searchTerm = $request->input('customer_fname');
 
+        // If a search term is present, retrieve policies that match the search term
+        if (!empty($searchTerm)) {
+            $customers = Customers::where('customer_fname', 'like', '%' . $searchTerm . '%')->get();
+        }
+        // Otherwise, retrieve all policies
+        else {
+            $customers = Customers::all();
+        }
 
-        return view('customers.index', ['customers' => $customers]);
+        return view('customers.index', ['customers' => $customers, 'searchTerm' => $searchTerm]);
     }
 
     /**

@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 <!-- @section('sidebar')
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @parent -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @parent -->
 
     <!-- <p>This is appended to the master sidebar.</p> -->
 <!-- @stop -->
@@ -29,8 +29,10 @@
                     <div class="carousel-caption">
                         <div class="bg-dark border rounded " style="opacity: 0.9;">
                             <h1 class="display-6 pt-2"><strong>MOTOR VEHICLE INSURANCE</strong></h1>
-                            <p class="lead">Drive with confidence knowing that you and your car are protected with our
-                                comprehensive car insurance. Don't let unexpected accidents ruin your journey, get insured
+                            <p class="lead" style="font-size: 18px;">
+                                Drive with confidence knowing that you and your car are protected with our
+                                comprehensive car insurance.<br> Don't let unexpected accidents ruin your journey, get
+                                insured
                                 today..</p>
                         </div>
                     </div>
@@ -40,8 +42,9 @@
                     <div class="carousel-caption">
                         <div class="bg-dark border rounded " style="opacity: 0.9;">
                             <h1 class="display-6  pt-2"><strong> GET INSURED NOW</strong></h1>
-                            <p class="lead">Secure your ride and your peace of mind with our reliable car insurance
-                                coverage. We've got you covered so you can enjoy the road ahead.</p>
+                            <p class="lead" style="font-size: 18px;">
+                                Secure your ride and your peace of mind with our reliable car insurance
+                                coverage. <br> We've got you covered so you can enjoy the road ahead.</p>
                         </div>
                     </div>
                 </div>
@@ -98,7 +101,6 @@
                         <li>Exceptional customer service</li>
                         <li>Easy claims process</li>
                     </ul>
-                    <a href="#" class="btn btn-primary">Get a Quote</a>
                 </div>
             </div>
         </div>

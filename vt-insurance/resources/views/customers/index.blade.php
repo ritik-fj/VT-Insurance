@@ -30,11 +30,27 @@
     <div class="">
 
     </div>
+
     <div class="container ">
-        <div class="float-end pb-2">
-            <a class="btn btn-success" href="{{ route('customers.create') }}"> Create New Customer</a>
+        <div class="row justify-content-center align-items-center g-2">
+            <div class="col">
+
+                <div class="float-start">
+                    <a class="btn btn-success" href="{{ route('customers.create') }}"> Create New Customer</a>
+                </div>
+                <form class="float-end" action="{{ route('customers.index') }}" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control " name="customer_fname" value="{{ $searchTerm }}"
+                            placeholder="Search by customer First Name..." style="max-width: 200px;">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="button" class="btn btn-secondary mx-1"
+                            onclick="window.location='{{ route('customers.index') }}'">Show All</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <table class="table table-bordered bg-white">
+
+        <table class="table table-bordered bg-white mt-3">
             <thead class="thead-dark">
                 <tr class="lead">
 
