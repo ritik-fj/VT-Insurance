@@ -4,12 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Policies;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PoliciesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('policy_type');
+
+        $policies = DB::table('policies')
+            ->where('policy_type', 'like', '%' . $searchTerm . '%')
+            ->get();
+
+        return view('policies.index', ['policies' => $policies]);
+    }
+
 
     public function policiesPDF()
     {
@@ -19,24 +33,38 @@ class PoliciesController extends Controller
         return $pdf->download('policies.pdf');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        // assigns policy data to variable
-        $policies = Policies::all();
+        // Retrieve the search term from the request object
+        $searchTerm = $request->input('policy_type');
 
-        // $policies = 'this is a test';
+        // If a search term is present, retrieve policies that match the search term
+        if (!empty($searchTerm)) {
+            $policies = Policies::where('policy_type', 'like', '%' . $searchTerm . '%')->get();
+        }
+        // Otherwise, retrieve all policies
+        else {
+            $policies = Policies::all();
+        }
 
-        return view('policies.index', ['policies' => $policies]);
+        return view('policies.index', ['policies' => $policies, 'searchTerm' => $searchTerm]);
     }
 
-    public function viewpolicies()
+    public function viewpolicies(Request $request)
     {
-        // assigns policy data to variable
-        $policies = Policies::all();
+        // Retrieve the search term from the request object
+        $searchTerm = $request->input('policy_type');
 
-        // $policies = 'this is a test';
+        // If a search term is present, retrieve policies that match the search term
+        if (!empty($searchTerm)) {
+            $policies = Policies::where('policy_type', 'like', '%' . $searchTerm . '%')->get();
+        }
+        // Otherwise, retrieve all policies
+        else {
+            $policies = Policies::all();
+        }
 
-        return view('policies.viewpolicies', ['policies' => $policies]);
+        return view('policies.viewpolicies', ['policies' => $policies, 'searchTerm' => $searchTerm]);
     }
 
     /**

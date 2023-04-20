@@ -48,6 +48,7 @@ Route::put('/policies/{id}', [PoliciesController::class, 'update'])->name('polic
 Route::delete('/policies/{id}', [PoliciesController::class, 'destroy'])->name('policies.destroy')->middleware('auth');
 Route::get('/viewpolicies', [PoliciesController::class, 'viewpolicies'])->name('viewpolicies');
 Route::get('/reports/policies', [PoliciesController::class, 'policiesPDF'])->name('policies.pdf')->middleware('auth');
+Route::post('/policies/search', [PoliciesController::class, 'search'])->name('policies.search');
 
 
 

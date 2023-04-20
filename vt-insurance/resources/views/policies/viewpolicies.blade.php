@@ -22,7 +22,25 @@
 
     <hr class="featurette-divider">
     <div class="container p-2">
-        <table class="table table-bordered bg-white text-center">
+
+
+        <div class="row justify-content-center align-items-center g-2">
+            <div class="col">
+
+                <form class="float-end" action="{{ route('policies.index') }}" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control " name="policy_type" value="{{ $searchTerm }}"
+                            placeholder="Search by policy type..." style="max-width: 200px;">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="button" class="btn btn-secondary mx-1"
+                            onclick="window.location='{{ route('policies.index') }}'">Show All</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <table class="table table-bordered bg-white text-center mt-2">
             <thead class="thead-dark">
                 <tr class="lead">
                     <th scope="col">Policy Type</th>
