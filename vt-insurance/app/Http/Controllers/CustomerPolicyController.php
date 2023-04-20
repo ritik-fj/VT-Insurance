@@ -40,4 +40,18 @@ class CustomerPolicyController extends Controller
             ->get();
         return view('show', compact('customer', 'policies'));
     }
+
+    public function customerdetailsPDF($customer_id)
+    {
+        $customers = Customers::findOrFail($customer_id);
+        $policies = DB::table('customer_policies')
+            ->join('policies', 'customer_policies.policy_id', '=', 'policies.id')
+            ->select('policies.id', 'policies.policy_type', 'policies.coverage_amount', 'policies.premium_amount', 'policies.policy_duration')
+            ->where('customer_policies.customer_id', '=', $customer_id)
+            ->get();
+
+        $pdf = app('dompdf.wrapper')->loadView('reports.customerdetails', compact('customers',  'policies'));
+
+        return $pdf->download('customersdetails.pdf');
+    }
 }

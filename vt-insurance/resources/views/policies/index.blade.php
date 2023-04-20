@@ -10,10 +10,12 @@
                 <h1 class="display-6">Our Policies</h1>
             </div>
             <div class="float-end px-5">
-                <a class="btn btn-success" href="{{ route('policies.create') }}"> Create New Policy</a>
+                <a href="{{ route('policies.pdf') }}" target="_blank" class="btn btn-success float-end">Download Policies
+                    Report</a>
             </div>
         </div>
     </div>
+
 
     @if ($message = Session::get('success'))
         <div class="p-2">
@@ -25,6 +27,8 @@
 
     <hr class="featurette-divider">
     <div class="container p-2">
+        <a class="btn btn-success float-end" href="{{ route('policies.create') }}"> Create New Policy</a>
+
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr class="lead">

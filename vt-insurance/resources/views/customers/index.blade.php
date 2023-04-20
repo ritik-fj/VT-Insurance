@@ -10,7 +10,8 @@
                 <h1 class="display-6">All Customers</h1>
             </div>
             <div class="px-5">
-                <a href="{{ route('customers.pdf') }}" target="_blank" class="btn btn-primary float-end">Generate PDF</a>
+                <a href="{{ route('customers.pdf') }}" target="_blank" class="btn btn-success float-end">Download Customers
+                    Report</a>
 
             </div>
 

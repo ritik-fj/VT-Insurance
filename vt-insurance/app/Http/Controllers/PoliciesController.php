@@ -10,6 +10,15 @@ class PoliciesController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function policiesPDF()
+    {
+        $policies = Policies::select('id', 'policy_type', 'coverage_amount', 'premium_amount', 'policy_duration')->get();
+        $pdf = app('dompdf.wrapper')->loadView('reports.policies', compact('policies'));
+
+        return $pdf->download('policies.pdf');
+    }
+
     public function index()
     {
         // assigns policy data to variable

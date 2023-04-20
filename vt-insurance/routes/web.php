@@ -36,6 +36,7 @@ Route::put('/customers/{id}', [CustomersController::class, 'update'])->name('cus
 Route::delete('/customers/{id}', [CustomersController::class, 'destroy'])->name('customers.destroy')->middleware('auth');
 Route::get('/reports/customers', [CustomersController::class, 'generatePDF'])->name('customers.pdf')->middleware('auth');
 
+
 // All Policies Routes
 // Route::resource('policies', PoliciesController::class);
 Route::get('/policies', [PoliciesController::class, 'index'])->name('policies.index')->middleware('auth');;
@@ -46,6 +47,8 @@ Route::get('/policies/{id}/edit', [PoliciesController::class, 'edit'])->name('po
 Route::put('/policies/{id}', [PoliciesController::class, 'update'])->name('policies.update')->middleware('auth');
 Route::delete('/policies/{id}', [PoliciesController::class, 'destroy'])->name('policies.destroy')->middleware('auth');
 Route::get('/viewpolicies', [PoliciesController::class, 'viewpolicies'])->name('viewpolicies');
+Route::get('/reports/policies', [PoliciesController::class, 'policiesPDF'])->name('policies.pdf')->middleware('auth');
+
 
 
 
@@ -56,3 +59,4 @@ Route::get('/customers/assign-policy/{customer_id}', [CustomerPolicyController::
 Route::post('/customer-policies', [CustomerPolicyController::class, 'store']);
 
 Route::get('/customers/{customer_id}/policies', [CustomerPolicyController::class, 'showCustomerPolicies'])->name('customers.policies_info');
+Route::get('/reports/{customer_id}/customerdetails', [CustomerPolicyController::class, 'customerdetailsPDF'])->name('customerdetails.pdf')->middleware('auth');
