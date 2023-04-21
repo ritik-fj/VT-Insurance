@@ -67,19 +67,20 @@
                         <td>{{ $customer->customer_lname }}</td>
                         <td class="">
                             <form action="{{ route('customers.destroy', $customer->id) }}" method="POST">
-                                <a class="btn btn-info " href="{{ route('customers.show', $customer->id) }}"> Show</a>
+                                <a class="btn btn-sm btn-info " href="{{ route('customers.show', $customer->id) }}">
+                                    Show</a>
 
 
                                 <a href="{{ route('customers.policies_info', ['customer_id' => $customer->id]) }}"
-                                    class="btn btn-primary">View Policies</a>
+                                    class="btn btn-sm btn-primary">View Policies</a>
 
 
-                                <a class="btn btn-primary " href="{{ route('customers.edit', $customer->id) }}">
+                                <a class="btn btn-sm btn-primary " href="{{ route('customers.edit', $customer->id) }}">
                                     Edit</a>
                                 @csrf
                                 @method('DELETE')
                                 <button onclick="return confirm('Are you sure you want to delete this customer?')"
-                                    type="submit" class="btn btn-danger">Delete</button>
+                                    type="submit" class="btn  btn-sm btn-danger">Delete</button>
                             </form>
                         </td>
                     </tr>

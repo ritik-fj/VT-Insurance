@@ -54,4 +54,13 @@ class CustomerPolicyController extends Controller
 
         return $pdf->download('customersdetails.pdf');
     }
+
+    public function destroy($customer_id, $policy_id)
+    {
+        $customerPolicy = CustomerPolicy::where('customer_id', $customer_id)->where('policy_id', $policy_id)->first();
+        if ($customerPolicy) {
+            $customerPolicy->delete();
+        }
+        return redirect()->back()->with('success', 'Customer Policy Deleted Successfully');
+    }
 }
