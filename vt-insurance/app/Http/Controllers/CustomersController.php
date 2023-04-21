@@ -13,7 +13,7 @@ class CustomersController extends Controller
 
     public function search(Request $request)
     {
-        $searchTerm = $request->input('policy_type');
+        $searchTerm = $request->input('customer_fname');
 
         $customers = DB::table('customers')
             ->where('customer_fname', 'like', '%' . $searchTerm . '%')
