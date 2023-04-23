@@ -110,16 +110,21 @@
                     <tr>
                         <td>{{ $policy->id }}</td>
                         <td>{{ $policy->policy_type }}</td>
-                        <td>{{ $policy->coverage_amount }}</td>
-                        <td>{{ $policy->premium_amount }}</td>
+                        <td>${{ $policy->coverage_amount }}</td>
+                        <td>${{ $policy->premium_amount }}</td>
                         <td>{{ $policy->policy_duration }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+
+        <p><strong>Total Coverage Amount: ${{ $totalCoverageAmount }}</strong></p>
+        <p><strong>Total Premium Amount: ${{ $totalPremiumAmount }}</strong></p>
     @else
         <p>No policies found for this customer.</p>
     @endif
+    <br>
+    <br>
     <hr>
     <div class="footer">
         <h1 class="display-6 text-center"><small>Contact Us</small> </h1>

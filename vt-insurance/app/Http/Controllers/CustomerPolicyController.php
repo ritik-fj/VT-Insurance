@@ -38,7 +38,14 @@ class CustomerPolicyController extends Controller
             ->select('policies.id', 'policies.policy_type', 'policies.coverage_amount', 'policies.premium_amount', 'policies.policy_duration')
             ->where('customer_policies.customer_id', '=', $customer_id)
             ->get();
-        return view('show', compact('customer', 'policies'));
+
+        // calculate the total coverage amount
+        $totalCoverageAmount = $policies->sum('coverage_amount');
+
+        // calculate the total coverage amount
+        $totalPremiumAmount = $policies->sum('premium_amount');
+
+        return view('show', compact('customer', 'policies', 'totalPremiumAmount', 'totalCoverageAmount'));
     }
 
     public function customerdetailsPDF($customer_id)
@@ -50,7 +57,13 @@ class CustomerPolicyController extends Controller
             ->where('customer_policies.customer_id', '=', $customer_id)
             ->get();
 
-        $pdf = app('dompdf.wrapper')->loadView('reports.customerdetails', compact('customers',  'policies'));
+        // calculate the total coverage amount
+        $totalCoverageAmount = $policies->sum('coverage_amount');
+
+        // calculate the total coverage amount
+        $totalPremiumAmount = $policies->sum('premium_amount');
+
+        $pdf = app('dompdf.wrapper')->loadView('reports.customerdetails', compact('customers',  'policies', 'totalCoverageAmount', 'totalPremiumAmount'));
 
         return $pdf->download('customersdetails.pdf');
     }
