@@ -30,19 +30,19 @@ class PoliciesTableSeeder extends Seeder
             'policy_type' => 'Comprehensive',
             'coverage_amount' => '30000',
             'premium_amount' => '1200',
-            'policy_duration' => '3 year',
+            'policy_duration' => '3 years',
         ]);
         Policies::create([
             'policy_type' => 'Liability',
             'coverage_amount' => '40000',
             'premium_amount' => '1600',
-            'policy_duration' => '4 year',
+            'policy_duration' => '4 years',
         ]);
         Policies::create([
             'policy_type' => 'Collision   ',
             'coverage_amount' => '50000',
             'premium_amount' => '2000',
-            'policy_duration' => '5 year',
+            'policy_duration' => '5 years',
         ]);
     }
 }

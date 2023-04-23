@@ -20,9 +20,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
-
 
 
 // Route::resource('customers', CustomersController::class);
@@ -37,12 +35,13 @@ Route::delete('/customers/{id}', [CustomersController::class, 'destroy'])->name(
 Route::get('/reports/customers', [CustomersController::class, 'generatePDF'])->name('customers.pdf')->middleware('auth');
 Route::post('/customers/search', [CustomersController::class, 'search'])->name('customers.search');
 
+
 // All Policies Routes
 // Route::resource('policies', PoliciesController::class);
-Route::get('/policies', [PoliciesController::class, 'index'])->name('policies.index')->middleware('auth');;
+Route::get('/policies', [PoliciesController::class, 'index'])->name('policies.index')->middleware('auth');
 Route::get('/policies/create', [PoliciesController::class, 'create'])->name('policies.create')->middleware('auth');
 Route::post('/policies', [PoliciesController::class, 'store'])->name('policies.store')->middleware('auth');
-Route::get('/policies/{id}', [PoliciesController::class, 'show'])->name('policies.show')->middleware('auth');;
+Route::get('/policies/{id}', [PoliciesController::class, 'show'])->name('policies.show')->middleware('auth');
 Route::get('/policies/{id}/edit', [PoliciesController::class, 'edit'])->name('policies.edit')->middleware('auth');
 Route::put('/policies/{id}', [PoliciesController::class, 'update'])->name('policies.update')->middleware('auth');
 Route::delete('/policies/{id}', [PoliciesController::class, 'destroy'])->name('policies.destroy')->middleware('auth');

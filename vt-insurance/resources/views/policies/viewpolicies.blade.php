@@ -27,13 +27,13 @@
         <div class="row justify-content-center align-items-center g-2">
             <div class="col">
 
-                <form class="float-end" action="{{ route('policies.index') }}" method="GET">
+                <form class="float-end" action="{{ route('viewpolicies') }}" method="GET">
                     <div class="input-group">
                         <input type="text" class="form-control " name="policy_type" value="{{ $searchTerm }}"
                             placeholder="Search by policy type..." style="max-width: 200px;">
                         <button type="submit" class="btn btn-primary">Search</button>
                         <button type="button" class="btn btn-secondary mx-1"
-                            onclick="window.location='{{ route('policies.index') }}'">Show All</button>
+                            onclick="window.location='{{ route('viewpolicies') }}'">Show All</button>
                     </div>
 
                 </form>

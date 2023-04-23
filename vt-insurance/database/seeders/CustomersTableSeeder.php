@@ -54,5 +54,29 @@ class CustomersTableSeeder extends Seeder
             'customer_email' => 'harley22@gmail.com',
             'customer_phone' => '7696299',
         ]);
+        Customers::create([
+            'customer_fname' => 'Dereck',
+            'customer_lname' => 'Bill',
+            'customer_dob' => '1999-04-22',
+            'customer_address' => 'Nasinu',
+            'customer_email' => 'derek@gmail.com',
+            'customer_phone' => '7655299',
+        ]);
+        Customers::create([
+            'customer_fname' => 'Tony',
+            'customer_lname' => 'Stark',
+            'customer_dob' => '1979-04-22',
+            'customer_address' => 'Suva',
+            'customer_email' => 'ts@gmail.com',
+            'customer_phone' => '9999999',
+        ]);
+        Customers::create([
+            'customer_fname' => 'Christian',
+            'customer_lname' => 'Bale',
+            'customer_dob' => '1988-07-12',
+            'customer_address' => 'Labasa',
+            'customer_email' => 'bale@gmail.com',
+            'customer_phone' => '3828828',
+        ]);
     }
 }
