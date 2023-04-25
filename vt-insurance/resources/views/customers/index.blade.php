@@ -39,8 +39,8 @@
                 </div>
                 <form class="float-end" action="{{ route('customers.index') }}" method="GET">
                     <div class="input-group">
-                        <input type="text" class="form-control " name="customer_fname" value="{{ $searchTerm }}"
-                            placeholder="Search by customer First Name..." style="max-width: 200px;">
+                        <input type="text" class="form-control" name="search" value="{{ $searchTerm }}"
+                            placeholder="Search by customer name..." style="max-width: 300px;">
                         <button type="submit" class="btn btn-primary">Search</button>
                         <button type="button" class="btn btn-secondary mx-1"
                             onclick="window.location='{{ route('customers.index') }}'">Show All</button>

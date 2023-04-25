@@ -17,6 +17,7 @@ class CustomersController extends Controller
 
         $customers = DB::table('customers')
             ->where('customer_fname', 'like', '%' . $searchTerm . '%')
+            ->orWhere('customer_lname', 'like', '%' . $searchTerm . '%')
             ->get();
 
         return view('customers.index', ['customers' => $customers]);
@@ -36,19 +37,23 @@ class CustomersController extends Controller
     public function index(Request $request)
     {
         // Retrieve the search term from the request object
-        $searchTerm = $request->input('customer_fname');
+        $searchTerm = $request->input('search');
 
-        // If a search term is present, retrieve policies that match the search term
+        // If a search term is present, retrieve customers that match the search term
         if (!empty($searchTerm)) {
-            $customers = Customers::where('customer_fname', 'like', '%' . $searchTerm . '%')->get();
+            $customers = Customers::where('customer_fname', 'like', '%' . $searchTerm . '%')
+                ->orWhere('customer_lname', 'like', '%' . $searchTerm . '%')
+                ->get();
         }
-        // Otherwise, retrieve all policies
+        // Otherwise, retrieve all customers
         else {
             $customers = Customers::all();
         }
 
         return view('customers.index', ['customers' => $customers, 'searchTerm' => $searchTerm]);
     }
+
+
 
     /**
      * Show the form for creating a new resource.
