@@ -29,12 +29,14 @@
                             <div class="row mb-3">
                                 <label for="role"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
-
                                 <div class="col-md-6">
-                                    <input id="role" type="text"
-                                        class="form-control @error('role') is-invalid @enderror" name="role"
-                                        value="{{ old('role') }}" required autocomplete="role" autofocus>
-
+                                    <select id="role" class="form-control @error('role') is-invalid @enderror"
+                                        name="role" required autocomplete="role" autofocus>
+                                        <option value="">-- Select Role --</option>
+                                        <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                                        <option value="insurer" {{ old('role') == 'insurer' ? 'selected' : '' }}>Insurer
+                                        </option>
+                                    </select>
                                     @error('role')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -42,6 +44,7 @@
                                     @enderror
                                 </div>
                             </div>
+
 
                             <div class="row mb-3">
                                 <label for="email"
