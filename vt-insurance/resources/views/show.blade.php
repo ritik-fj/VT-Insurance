@@ -52,12 +52,17 @@
                                     <form
                                         action="{{ route('customer_policy.destroy', ['customer_id' => $customer->id, 'policy_id' => $policy->id]) }}"
                                         method="POST">
+
+
                                         @csrf
                                         @method('DELETE')
                                         <button
                                             onclick="return confirm('Are you sure you want to delete this policy for the customer?')"
                                             type="submit" class="btn btn-danger btn-sm">Delete</button>
+
                                     </form>
+                                    <a href="{{ route('edit', $policy->id) }}" class="btn btn-primary m-1">Edit Policy</a>
+
                                 </td>
                             </tr>
                         @endforeach
@@ -70,11 +75,11 @@
                 <div class="col">
                     <table class=" table table-bordered table-hover bg-white">
                         <tbody>
-                            <tr>
+                            <tr style="background-color: lightblue;">
                                 <td><strong>Total Coverage Amount:</strong></td>
                                 <td>${{ $totalCoverageAmount }}</td>
                             </tr>
-                            <tr>
+                            <tr style="background-color: lightblue;">
                                 <td><strong>Total Premium Amount:</strong></td>
                                 <td>${{ $totalPremiumAmount }}</td>
                             </tr>

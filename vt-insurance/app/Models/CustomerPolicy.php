@@ -10,8 +10,12 @@ class CustomerPolicy extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'customer_id',
         'policy_id',
+        'coverage_amount',
+        'premium_amount',
+        'policy_duration'
     ];
 
     public function customer()

@@ -15,6 +15,7 @@ class CustomerPolicyController extends Controller
     {
         $customer = Customers::find($customer_id);
         $policyTypes = Policies::pluck('policy_type', 'id');
+
         return view('assign-policy', compact('customer', 'policyTypes'));
     }
 
@@ -25,17 +26,24 @@ class CustomerPolicyController extends Controller
         $customer_policy->customer_id = $request->input('customer_id');
         $customer_policy->policy_id = $request->input('policy_type');
 
+        $policy = Policies::find($request->input('policy_type'));
+
+        $customer_policy->coverage_amount = $policy->coverage_amount;
+        $customer_policy->premium_amount = $policy->premium_amount;
+        $customer_policy->policy_duration = $policy->policy_duration;
+
         $customer_policy->save();
 
         return redirect('/customers/' . $request->input('customer_id') . '/policies');
     }
+
 
     public function showCustomerPolicies($customer_id)
     {
         $customer = Customers::findOrFail($customer_id);
         $policies = DB::table('customer_policies')
             ->join('policies', 'customer_policies.policy_id', '=', 'policies.id')
-            ->select('policies.id', 'policies.policy_type', 'policies.coverage_amount', 'policies.premium_amount', 'policies.policy_duration')
+            ->select('customer_policies.id', 'policies.id as policy_id', 'policies.policy_type', 'customer_policies.coverage_amount', 'customer_policies.premium_amount', 'customer_policies.policy_duration')
             ->where('customer_policies.customer_id', '=', $customer_id)
             ->get();
 
@@ -47,6 +55,7 @@ class CustomerPolicyController extends Controller
 
         return view('show', compact('customer', 'policies', 'totalPremiumAmount', 'totalCoverageAmount'));
     }
+
 
     public function customerdetailsPDF($customer_id)
     {
@@ -67,6 +76,36 @@ class CustomerPolicyController extends Controller
 
         return $pdf->download('customersdetails.pdf');
     }
+
+
+    public function edit($id)
+    {
+        $customerPolicy = CustomerPolicy::find($id);
+
+        return view('edit', compact('customerPolicy'));
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        //validate input 
+        $request->validate([
+            'coverage_amount' => 'required',
+            'premium_amount' => 'required',
+            'policy_duration' => 'required'
+        ]);
+
+        $customerPolicy = CustomerPolicy::find($id);
+
+        $customerPolicy->coverage_amount = $request->input('coverage_amount');
+        $customerPolicy->premium_amount = $request->input('premium_amount');
+        $customerPolicy->policy_duration = $request->input('policy_duration');
+
+        $customerPolicy->save();
+
+        return redirect('/customers/' . $customerPolicy->customer_id . '/policies')->with('success', 'Customer policy updated successfully!');
+    }
+
 
     public function destroy($customer_id, $policy_id)
     {
