@@ -61,3 +61,9 @@ Route::delete('/customer/{customer_id}/policy/{policy_id}', [CustomerPolicyContr
 
 Route::get('/customer_policies/{id}/edit', [CustomerPolicyController::class, 'edit'])->name('edit');
 Route::put('/customer_policies/{id}', [CustomerPolicyController::class, 'update'])->name('customer_policies.update');
+
+Route::get('/customerpremiums', [CustomerPolicyController::class, 'premiums'])->name('viewpremiums')->middleware('auth');
+
+Route::get('/premiums/{id}/edit', [CustomerPolicyController::class, 'editpremium'])->name('editpremium');
+Route::put('/premiums/{id}', [CustomerPolicyController::class, 'updatepremium'])->name('updatepremium');
+Route::post('/premiums/search', [CustomerPolicyController::class, 'search'])->name('premiums.search');

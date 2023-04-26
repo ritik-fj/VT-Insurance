@@ -47,6 +47,21 @@
                                 </div>
                             </div>
                             <hr>
+
+                            <div class="row justify-content-center align-items-center g-2">
+                                <div class="col">
+                                    <div class="card text-center bg-info text-white">
+                                        <a href="{{ route('viewpremiums') }}" class="btn">
+                                            <div class="card-body">
+                                                <h5 class="lead" style="font-size: 25px"><strong> View Premiums
+                                                    </strong></h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+
                             <div class="row justify-content-center align-items-center g-2">
                                 <div class="col">
                                     <div class="card text-center bg-info text-white">

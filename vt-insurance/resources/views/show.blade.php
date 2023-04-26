@@ -53,7 +53,6 @@
                                         action="{{ route('customer_policy.destroy', ['customer_id' => $customer->id, 'policy_id' => $policy->id]) }}"
                                         method="POST">
 
-
                                         @csrf
                                         @method('DELETE')
                                         <button

@@ -11,6 +11,51 @@ use Illuminate\Support\Facades\DB;
 class CustomerPolicyController extends Controller
 {
     //
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('customer_fname');
+
+        $premiums = DB::table('customer_policies')
+            ->join('policies', 'customer_policies.policy_id', '=', 'policies.id')
+            ->join('customers', 'customer_policies.customer_id', '=', 'customers.id')
+            ->where('customer_fname', 'like', '%' . $searchTerm . '%')
+            ->orWhere('customer_lname', 'like', '%' . $searchTerm . '%')
+            ->orWhere('id', 'like', '%' . $searchTerm . '%')
+            ->get();
+
+        return view('customers.index', ['customers' => $premiums]);
+    }
+    public function premiums(Request $request)
+    {
+        // Retrieve the search term from the request object
+        $searchTerm = $request->input('search');
+
+        // If a search term is present, retrieve customers that match the search term
+        if (!empty($searchTerm)) {
+
+            $premiums = DB::table('customer_policies')
+                ->join('policies', 'customer_policies.policy_id', '=', 'policies.id')
+                ->join('customers', 'customer_policies.customer_id', '=', 'customers.id')
+                ->where('id', 'like', '%' . $searchTerm . '%')
+                ->orWhere('customer_fname', 'like', '%' . $searchTerm . '%')
+                ->orWhere('customer_lname', 'like', '%' . $searchTerm . '%')
+                ->select('customer_policies.id', 'policies.id as policy_id', 'policies.policy_type', 'customer_policies.coverage_amount', 'customer_policies.premium_amount', 'customer_policies.policy_duration', 'customers.customer_fname', 'customers.customer_lname')
+                ->get();
+        }
+        // Otherwise, retrieve all customers
+        else {
+            $premiums = DB::table('customer_policies')
+                ->join('policies', 'customer_policies.policy_id', '=', 'policies.id')
+                ->join('customers', 'customer_policies.customer_id', '=', 'customers.id')
+                ->select('customer_policies.id', 'policies.id as policy_id', 'policies.policy_type', 'customer_policies.coverage_amount', 'customer_policies.premium_amount', 'customer_policies.policy_duration', 'customers.customer_fname', 'customers.customer_lname')
+                ->get();
+        }
+
+        return view('premiumdashboard', compact('premiums'));
+    }
+
+
     public function assignPolicy($customer_id)
     {
         $customer = Customers::find($customer_id);
@@ -114,5 +159,33 @@ class CustomerPolicyController extends Controller
             $customerPolicy->delete();
         }
         return redirect()->back()->with('success', 'Customer Policy Deleted Successfully');
+    }
+
+    public function editpremium($id)
+    {
+        $customerPolicy = CustomerPolicy::find($id);
+
+        return view('editpremium', compact('customerPolicy'));
+    }
+
+    public function updatePremium(CustomerPolicy $customerPolicy, Request $request)
+    {
+        try {
+            $request->validate([
+                'coverage_amount' => 'required',
+                'policy_duration' => 'required',
+                'premium_amount' => 'required',
+            ]);
+
+            $customerPolicy->update([
+                'coverage_amount' => $request->input('coverage_amount'),
+                'policy_duration' => $request->input('policy_duration'),
+                'premium_amount' => $request->input('premium_amount'),
+            ]);
+
+            return redirect('viewpremiums')->with('success', 'Premium updated successfully!');
+        } catch (\Exception $e) {
+            return redirect('viewpremiums')->with('error', 'An error occurred while updating the premium.');
+        }
     }
 }
