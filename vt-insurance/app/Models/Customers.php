@@ -23,4 +23,9 @@ class Customers extends Model
     {
         return $this->belongsToMany(Policies::class)->withTimestamps();
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

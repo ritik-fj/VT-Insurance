@@ -31,4 +31,8 @@ class HomeController extends Controller
             'policiesCount' => $policiesCount,
         ]);
     }
+    public function customerindex()
+    {;
+        return view('customerhome');
+    }
 }

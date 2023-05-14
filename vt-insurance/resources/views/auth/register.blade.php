@@ -100,7 +100,7 @@
                                         <option value="">-- Select Role --</option>
                                         <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin
                                         </option>
-                                        <option value="insurer" {{ old('role') == 'customer' ? 'selected' : '' }}>Customer
+                                        <option value="customer" {{ old('role') == 'customer' ? 'selected' : '' }}>Customer
                                         </option>
                                     </select>
                                     @error('role')

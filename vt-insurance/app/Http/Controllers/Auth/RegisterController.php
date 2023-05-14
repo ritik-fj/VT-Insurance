@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customers;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -29,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -64,7 +67,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'fname' => $data['fname'],
             'lname' => $data['lname'],
             'dob' => $data['dob'],
@@ -74,5 +77,42 @@ class RegisterController extends Controller
             'role' => $data['role'],
             'password' => Hash::make($data['password']),
         ]);
+
+        // Create a corresponding entry in the customers table if the user is of type "customer"
+        if ($user->role === 'customer') {
+            $customer = Customers::create([
+                'customer_fname' => $user->fname,
+                'customer_lname' => $user->lname,
+                'customer_dob' => $user->dob,
+                'customer_address' => $user->address,
+                'customer_email' => $user->email,
+                'customer_phone' => $user->phone,
+                // Add more fields as needed
+            ]);
+
+            $user->customer()->save($customer);
+        }
+        return $user;
+    }
+
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $user = $this->create($request->all());
+
+        // Customize the logic after successful registration
+        // You can perform any additional actions here
+
+        Session::flash('success', 'User created successfully.'); // Flash a success message
+
+        return redirect()->route('home')->with('success', 'User Created Successfully'); // Redirect to login page
     }
 }

@@ -23,6 +23,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/customerhome', [App\Http\Controllers\HomeController::class, 'customerindex'])->name('customerhome')->middleware('auth');
+
 
 
 // Route::resource('customers', CustomersController::class);

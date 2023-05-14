@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Admin Dashboard')
+@section('title', 'Customer Dashboard')
 
 @section('content')
     <div class="container lead">
@@ -15,7 +15,7 @@
                 @endif
                 <div class="card">
                     <div class="card-header">
-                        <h1 class="display-6 text-center">Welcome to the Admin Dashboard</h1>
+                        <h1 class="display-6 text-center">Welcome to the Customer Dashboard</h1>
                     </div>
 
                     <div class="card-body">
@@ -32,11 +32,7 @@
                                 <div class="card text-center text-white" style="background-color: #184949">
                                     <div class="card-body">
                                         <h5 class="card-title">Customers</h5>
-                                        <p class="card-text">We currently have <span
-                                                class="fw-bold">{{ $customersCount }}</span>
-                                            customers.</p>
-                                        <a href="{{ route('customers.index') }}" class="btn btn-info me-3">Manage
-                                            Customers</a>
+
 
                                     </div>
                                 </div>
@@ -45,10 +41,6 @@
                                 <div class="card text-center text-white" style="background-color: #184949">
                                     <div class="card-body">
                                         <h5 class="card-title">Policies</h5>
-                                        <p class="card-text">We currently have <span
-                                                class="fw-bold">{{ $policiesCount }}</span>
-                                            policies.</p>
-                                        <a href="{{ route('policies.index') }}" class="btn btn-info">Manage Policies</a>
 
                                     </div>
                                 </div>
@@ -74,8 +66,7 @@
                                     <div class="card text-center bg-info text-white">
                                         <a href="{{ route('register') }}" class="btn">
                                             <div class="card-body">
-                                                <h5 class="lead" style="font-size: 25px"><strong> Register New User
-                                                    </strong></h5>
+
                                             </div>
                                         </a>
                                     </div>
