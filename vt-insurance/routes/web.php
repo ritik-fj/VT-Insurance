@@ -3,6 +3,7 @@
 use App\Http\Controllers\PoliciesController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\CustomerPolicyController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,8 +23,13 @@ Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
-Route::get('/customerhome', [App\Http\Controllers\HomeController::class, 'customerindex'])->name('customerhome')->middleware('auth');
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/dashboard/admin', [DashboardController::class, 'admin'])->name('admin.dashboard');
+});
+
+Route::middleware(['auth', 'role:customer'])->group(function () {
+    Route::get('/dashboard/customer', [DashboardController::class, 'customer'])->name('customer.dashboard');
+});
 
 
 

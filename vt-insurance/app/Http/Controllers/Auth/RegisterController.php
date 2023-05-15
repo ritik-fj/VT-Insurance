@@ -113,6 +113,6 @@ class RegisterController extends Controller
 
         Session::flash('success', 'User created successfully.'); // Flash a success message
 
-        return redirect()->route('home')->with('success', 'User Created Successfully'); // Redirect to login page
+        return redirect()->route('admin.dashboard')->with('success', 'User Created Successfully'); // Redirect to login page
     }
 }

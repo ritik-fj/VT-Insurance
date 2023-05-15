@@ -16,14 +16,13 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top ">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand px-4" href="{{ url('/') }}">VT Insurance</a>
 
@@ -56,16 +55,20 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item lead">
-                                    <a class="nav-link " href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            @if (Auth::user()->role === 'admin')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+                                </li>
+                            @elseif (Auth::user()->role === 'customer')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('customer.dashboard') }}">Customer Dashboard</a>
                                 </li>
                             @endif
 
-                            {{-- @if (Route::has('register'))
-                                <li class="nav-item lead">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif --}}
-                        @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -73,15 +76,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('home') }}">
-                                        {{ __('Admin Dashboard') }}
-                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
