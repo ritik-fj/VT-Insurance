@@ -67,9 +67,7 @@
                                     </div>
                                 </div>
 
-                            </div>
 
-                            <div class="row justify-content-center align-items-center g-2">
                                 <div class="col">
                                     <div class="card text-center bg-info text-white">
                                         <a href="{{ route('register') }}" class="btn">

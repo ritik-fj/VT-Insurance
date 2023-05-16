@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\ClaimController;
 use App\Http\Controllers\PoliciesController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\CustomerPolicyController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoggedInCustomerController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,6 +32,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth', 'role:customer'])->group(function () {
     Route::get('/dashboard/customer', [DashboardController::class, 'customer'])->name('customer.dashboard');
 });
+
+Route::get('/mypolicies', [LoggedInCustomerController::class, 'mypolicies'])->name('mypolicies');
+
+
+Route::get('/claims/create', [ClaimController::class, 'create'])->name('claims.create');
+Route::post('/claims', [ClaimController::class, 'store'])->name('claims.store');
+
 
 
 

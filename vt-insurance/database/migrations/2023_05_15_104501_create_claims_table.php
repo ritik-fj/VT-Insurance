@@ -11,18 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customer_policies', function (Blueprint $table) {
+        Schema::create('claims', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('policy_id');
-            $table->string('policy_type');
-            $table->string('coverage_amount');
-            $table->string('premium_amount');
-            $table->string('policy_duration');
+            $table->text('description');
+            $table->date('incident_date');
+            $table->string('claim_type');
+            $table->string('claim_amount');
             $table->timestamps();
 
+            // Define foreign key constraints
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
-            $table->foreign('policy_id')->references('id')->on('policies')->onDelete('cascade');
+            $table->foreign('policy_id')->references('id')->on('customer_policies')->onDelete('cascade');
         });
     }
 
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customer_policies');
+        Schema::dropIfExists('claims');
     }
 };

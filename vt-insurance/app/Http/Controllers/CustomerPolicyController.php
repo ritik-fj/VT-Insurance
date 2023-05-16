@@ -73,6 +73,7 @@ class CustomerPolicyController extends Controller
 
         $policy = Policies::find($request->input('policy_type'));
 
+        $customer_policy->policy_type = $policy->policy_type;
         $customer_policy->coverage_amount = $policy->coverage_amount;
         $customer_policy->premium_amount = $policy->premium_amount;
         $customer_policy->policy_duration = $policy->policy_duration;

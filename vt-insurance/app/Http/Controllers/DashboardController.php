@@ -21,6 +21,12 @@ class DashboardController extends Controller
 
     public function customer()
     {
-        return view('dashboard.customer');
+        $customer = DB::table('users')
+            ->select('*')
+            ->where('id', '=', auth()->user()->id)
+            ->first();
+
+
+        return view('dashboard.customer', compact('customer'));
     }
 }
