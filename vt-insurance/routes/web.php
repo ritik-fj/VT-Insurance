@@ -38,6 +38,8 @@ Route::get('/mypolicies', [LoggedInCustomerController::class, 'mypolicies'])->na
 
 Route::get('/claims/create', [ClaimController::class, 'create'])->name('claims.create');
 Route::post('/claims', [ClaimController::class, 'store'])->name('claims.store');
+Route::get('/viewclaims', [ClaimController::class, 'index'])->name('claims.index');
+
 
 
 

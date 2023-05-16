@@ -16,6 +16,8 @@ class Claim extends Model
         'description',
         'incident_date',
         'claim_type',
-        'claim_amount'
+        'claim_amount',
+        'status',
+        'image'
     ];
 }

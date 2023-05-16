@@ -19,6 +19,9 @@ return new class extends Migration
             $table->date('incident_date');
             $table->string('claim_type');
             $table->string('claim_amount');
+            $table->binary('image')->nullable();
+            $table->string('status')->default('Pending');
+
             $table->timestamps();
 
             // Define foreign key constraints

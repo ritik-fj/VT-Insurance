@@ -11,7 +11,7 @@
                 {{ session('success') }}
             </div>
         @endif
-        <form method="POST" action="{{ route('claims.store') }}">
+        <form method="POST" action="{{ route('claims.store') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="form-group py-2">
@@ -42,6 +42,11 @@
                 <label for="claim_amount">Claim Amount</label>
                 <input id="claim_amount" type="number" name="claim_amount" class="form-control" required>
             </div>
+            <div class="form-group py-2">
+                <label for="image">Incident Image</label>
+                <input id="image" type="file" name="image" class="form-control-file">
+            </div>
+
             <div class="text-center py-2">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>

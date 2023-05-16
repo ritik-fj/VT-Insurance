@@ -19,6 +19,7 @@
                     <th>Coverage Amount</th>
                     <th>Premium Amount</th>
                     <th>Policy Duration</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +30,14 @@
                         <td>{{ $policy->coverage_amount }}</td>
                         <td>{{ $policy->premium_amount }}</td>
                         <td>{{ $policy->policy_duration }}</td>
+                        <td class="text-center">
+                            @if ($policy->premium_amount == 0)
+                                <button type="button" class="btn btn-primary" disabled>Pay Premium</button>
+                            @else
+                                <a href="#" class="btn btn-primary">Pay Premium</a>
+                            @endif
+                        </td>
+
                     </tr>
                 @endforeach
             </tbody>
