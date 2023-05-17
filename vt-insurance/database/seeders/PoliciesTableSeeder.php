@@ -39,7 +39,7 @@ class PoliciesTableSeeder extends Seeder
             'policy_duration' => '4 years',
         ]);
         Policies::create([
-            'policy_type' => 'Collision   ',
+            'policy_type' => 'Collision',
             'coverage_amount' => '50000',
             'premium_amount' => '2000',
             'policy_duration' => '5 years',

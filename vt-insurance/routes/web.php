@@ -40,7 +40,7 @@ Route::get('/claims/create', [ClaimController::class, 'create'])->name('claims.c
 Route::post('/claims', [ClaimController::class, 'store'])->name('claims.store');
 Route::get('/viewclaims', [ClaimController::class, 'index'])->name('claims.index');
 
-
+Route::get('/allclaims', [ClaimController::class, 'allclaims'])->name('claims.all');
 
 
 

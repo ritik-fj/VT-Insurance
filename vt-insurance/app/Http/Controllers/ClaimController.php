@@ -78,7 +78,14 @@ class ClaimController extends Controller
         return redirect()->route('claims.create')->with('success', 'Claim submitted successfully!');
     }
 
-
+    public function allclaims()
+    {
+        //
+        $claims = DB::table('claims')
+                ->select('*')
+                ->get();
+            return view('admin.viewclaims', compact('claims'));
+    }
 
     /**
      * Display the specified resource.
