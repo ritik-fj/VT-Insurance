@@ -108,9 +108,8 @@
                         </p>
                     </div>
 
-                    <div class="col"></div>
 
-                    <div class="col">
+                    <div class="col ">
                         <h5 class="display-6 text-center" style="font-size: 25px;"><small>About Us</small> </h5>
                         <hr>
                         <p class="lead text-center" style="font-size: 15px;"><small> VT Insurance is committed to
@@ -125,6 +124,7 @@
                                 questions you may have and help you choose the right policy for your needs.</small>
                         </p>
                     </div>
+                    <hr>
                 </div>
                 <p class="text-center" style="font-size: 13px;">Copyright © 2023. VT Insurance
                 </p>

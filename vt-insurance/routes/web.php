@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\CustomerPolicyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoggedInCustomerController;
+use App\Http\Controllers\RequestChangeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,6 +42,12 @@ Route::post('/claims', [ClaimController::class, 'store'])->name('claims.store');
 Route::get('/viewclaims', [ClaimController::class, 'index'])->name('claims.index');
 
 Route::get('/allclaims', [ClaimController::class, 'allclaims'])->name('claims.all');
+
+//request change routes
+Route::get('/requestchange/{id}', [RequestChangeController::class, 'create'])->name('request.create');
+Route::post('/requestchange', [RequestChangeController::class, 'store'])->name('request.store');
+Route::get('/viewrequests', [RequestChangeController::class, 'viewrequests'])->name('request.view');
+
 
 
 

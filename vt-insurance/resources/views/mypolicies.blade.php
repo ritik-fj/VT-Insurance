@@ -11,7 +11,7 @@
             <h1 class="display-6">My Policies</h1>
         </div>
         <hr>
-        <table class="table table-bordered  border-dark">
+        <table class="table table-bordered bg-white border-dark">
             <thead>
                 <tr>
                     <th>Policy ID</th>
@@ -20,6 +20,8 @@
                     <th>Premium Amount</th>
                     <th>Policy Duration</th>
                     <th></th>
+                    <th></th>
+
                 </tr>
             </thead>
             <tbody>
@@ -31,10 +33,17 @@
                         <td>{{ $policy->premium_amount }}</td>
                         <td>{{ $policy->policy_duration }}</td>
                         <td class="text-center">
+
+                            <a href="{{ route('request.create', $policy->id) }}" class="btn btn-primary">Request
+                                Change</a>
+
+
+                        </td>
+                        <td class="text-center">
                             @if ($policy->premium_amount == 0)
-                                <button type="button" class="btn btn-primary" disabled>Pay Premium</button>
+                                <button type="button" class="btn btn-success" disabled>Pay Premium</button>
                             @else
-                                <a href="#" class="btn btn-primary">Pay Premium</a>
+                                <a href="#" class="btn btn-success">Pay Premium</a>
                             @endif
                         </td>
 
@@ -42,5 +51,6 @@
                 @endforeach
             </tbody>
         </table>
+        <hr>
     </div>
 @stop

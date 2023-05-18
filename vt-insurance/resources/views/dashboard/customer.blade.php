@@ -91,6 +91,17 @@
                                         </a>
                                     </div>
                                 </div>
+
+
+                                <div class="col p-3">
+                                    <div class="card text-center text-white" style="background-color: #184949">
+                                        <a href="{{ route('request.view') }}" class="btn text-light">
+                                            <div class="card-body">
+                                                <h5 class="card-title">My Change Requests</h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
