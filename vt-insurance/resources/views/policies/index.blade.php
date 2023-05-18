@@ -57,6 +57,8 @@
                     <th scope="col">Coverage Amount</th>
                     <th scope="col">Premium Amount</th>
                     <th scope="col">Policy Duration</th>
+                    <th scope="col">Description</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -66,6 +68,7 @@
                         <td>{{ $policy->coverage_amount }}</td>
                         <td>{{ $policy->premium_amount }}</td>
                         <td>{{ $policy->policy_duration }}</td>
+                        <td style="word-break: break-word; max-width: 200px;">{{ $policy->description }}</td>
                         <td class="">
                             <form action="{{ route('policies.destroy', $policy->id) }}" method="POST">
                                 <a class="btn btn-info " href="{{ route('policies.show', $policy->id) }}"> Show</a>

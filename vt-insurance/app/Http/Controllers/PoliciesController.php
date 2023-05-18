@@ -81,12 +81,14 @@ class PoliciesController extends Controller
      */
     public function store(Request $request)
     {
-        //validate input 
+        //validate input
         $request->validate([
             'policy_type' => 'required',
             'coverage_amount' => 'required',
             'premium_amount' => 'required',
-            'policy_duration' => 'required'
+            'policy_duration' => 'required',
+            'excess_amount' => 'required',
+            'description' => 'required'
         ]);
 
         //create a new policy
@@ -120,12 +122,13 @@ class PoliciesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //validate input 
+        //validate input
         $request->validate([
             'policy_type' => 'required',
             'coverage_amount' => 'required',
             'premium_amount' => 'required',
-            'policy_duration' => 'required'
+            'policy_duration' => 'required',
+
         ]);
 
         //finds and updates records

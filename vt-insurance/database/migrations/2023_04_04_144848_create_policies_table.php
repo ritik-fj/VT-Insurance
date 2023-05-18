@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('premium_amount');
             $table->string('excess_amount');
             $table->string('policy_duration');
+            $table->string('description');
             $table->timestamps();
         });
     }
