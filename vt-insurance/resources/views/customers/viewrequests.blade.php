@@ -30,7 +30,7 @@
                         <td>{{ $request->coverage_amount }}</td>
                         <td>{{ $request->premium_amount }}</td>
                         <td>{{ $request->policy_duration }}</td>
-                        <td></td>
+                        <td>{{ $request->status }}</td>
                     </tr>
                 @endforeach
             </tbody>

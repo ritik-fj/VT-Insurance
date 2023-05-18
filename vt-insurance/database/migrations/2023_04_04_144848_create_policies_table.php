@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('policy_type');
             $table->string('coverage_amount');
             $table->string('premium_amount');
+            $table->string('excess_amount');
             $table->string('policy_duration');
             $table->timestamps();
         });

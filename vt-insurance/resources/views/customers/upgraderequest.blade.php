@@ -43,12 +43,17 @@
             </div>
             <div class="mb-3">
                 <label class="form-label"> <strong>Coverage Amount</strong></label>
-                <input type="text" class="form-control" value="{{ $policy->coverage_amount }}" name="coverage_amount"
-                    placeholder="Enter Coverage Amount">
+                <input type="text" class="form-control" id="coverage_amount" value="{{ $policy->coverage_amount }}"
+                    name="coverage_amount" placeholder="Enter Coverage Amount">
             </div>
             <div class="mb-3">
                 <label class="form-label"> <strong>Premium Amount</strong></label>
-                <input type="text" class="form-control" value="{{ $policy->premium_amount }}" name="premium_amount"
+                <input type="text" class="form-control" id="premium_amount" name="premium_amount"
+                    placeholder="Enter Policy Amount">
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> <strong>Excess Amount</strong></label>
+                <input type="text" class="form-control" id="excess_amount" name="excess_amount"
                     placeholder="Enter Policy Amount">
             </div>
             <div class="mb-3">
@@ -62,7 +67,22 @@
             </div>
         </form>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#coverage_amount').on('input', function() {
+                var coverage_amount = $(this).val();
+                var premium_rate = 0.05; // 5%
+                var excess_rate = 0.02; // 2%
 
+                var premium_amount = coverage_amount * premium_rate;
+                var excess_amount = coverage_amount * excess_rate;
+
+                $('#premium_amount').val(premium_amount.toFixed(2));
+                $('#excess_amount').val(excess_amount.toFixed(2));
+            });
+        });
+    </script>
 
 
 

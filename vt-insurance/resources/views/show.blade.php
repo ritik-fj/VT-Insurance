@@ -37,6 +37,7 @@
                             <th>Policy Type</th>
                             <th>Coverage Amount</th>
                             <th>Premium Amount</th>
+                            <th>Excess Amount</th>
                             <th>Policy Duration</th>
                         </tr>
                     </thead>
@@ -47,6 +48,7 @@
                                 <td>{{ $policy->policy_type }}</td>
                                 <td>${{ $policy->coverage_amount }}</td>
                                 <td>${{ $policy->premium_amount }}</td>
+                                <td>${{ $policy->excess_amount }}</td>
                                 <td>{{ $policy->policy_duration }}</td>
                                 <td class="text-center">
                                     <form
@@ -81,6 +83,10 @@
                             <tr style="background-color: lightblue;">
                                 <td><strong>Total Premium Amount:</strong></td>
                                 <td>${{ $totalPremiumAmount }}</td>
+                            </tr>
+                            <tr style="background-color: lightblue;">
+                                <td><strong>Total Excess Amount:</strong></td>
+                                <td>${{ $totalExcessAmount }}</td>
                             </tr>
 
                         </tbody>

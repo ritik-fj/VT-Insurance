@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('request_changes', function (Blueprint $table) {
+        Schema::create('upgrade_requests', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('policy_id');
             $table->string('policy_type');
             $table->string('coverage_amount');
             $table->string('premium_amount');
+            $table->string('excess_amount');
             $table->string('policy_duration');
+            $table->string('status')->default('Pending');
             $table->timestamps();
         });
     }

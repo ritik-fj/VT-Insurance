@@ -3,38 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\CustomerPolicy;
-use App\Models\RequestChange;
+use App\Models\UpgradeRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class RequestChangeController extends Controller
+class UpgradeRequestController extends Controller
 {
     public function create($id)
     {
         $policy = CustomerPolicy::findOrFail($id);
 
-        return view('customers.requestchange', compact('policy'));
+        return view('customers.upgraderequest', compact('policy'));
     }
 
     public function store(Request $request)
     {
 
-        // //validate input
-        // $request->validate([
-        //     'policy_type' => 'required',
-        //     'coverage_amount' => 'required',
-        //     'premium_amount' => 'required',
-        //     'policy_duration' => 'required'
-        // ]);
 
-        // RequestChange::create($request->all());
 
-        $change = new RequestChange();
+        $change = new UpgradeRequest();
         $change->customer_id = $request->input('customer_id');
         $change->policy_id = $request->input('policy_id');
         $change->policy_type = $request->input('policy_type');
         $change->coverage_amount = $request->input('coverage_amount');
         $change->premium_amount = $request->input('premium_amount');
+        $change->excess_amount = $request->input('excess_amount');
         $change->policy_duration = $request->input('policy_duration');
 
         $change->save();
@@ -51,7 +44,7 @@ class RequestChangeController extends Controller
             ->where('user_id', '=', auth()->user()->id)
             ->value('id');
 
-        $requests = DB::table('request_changes')
+        $requests = DB::table('upgrade_requests')
             ->select('*')
             ->where('customer_id', $customer)
             ->get();

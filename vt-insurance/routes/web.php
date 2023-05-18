@@ -6,7 +6,7 @@ use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\CustomerPolicyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoggedInCustomerController;
-use App\Http\Controllers\RequestChangeController;
+use App\Http\Controllers\UpgradeRequestController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,17 +36,16 @@ Route::middleware(['auth', 'role:customer'])->group(function () {
 
 Route::get('/mypolicies', [LoggedInCustomerController::class, 'mypolicies'])->name('mypolicies');
 
-
+//claims routes
 Route::get('/claims/create', [ClaimController::class, 'create'])->name('claims.create');
 Route::post('/claims', [ClaimController::class, 'store'])->name('claims.store');
 Route::get('/viewclaims', [ClaimController::class, 'index'])->name('claims.index');
-
 Route::get('/allclaims', [ClaimController::class, 'allclaims'])->name('claims.all');
 
-//request change routes
-Route::get('/requestchange/{id}', [RequestChangeController::class, 'create'])->name('request.create');
-Route::post('/requestchange', [RequestChangeController::class, 'store'])->name('request.store');
-Route::get('/viewrequests', [RequestChangeController::class, 'viewrequests'])->name('request.view');
+//upgrade request routes
+Route::get('/upgrade-request/{id}', [UpgradeRequestController::class, 'create'])->name('request.create');
+Route::post('/upgrade-request', [UpgradeRequestController::class, 'store'])->name('request.store');
+Route::get('/viewrequests', [UpgradeRequestController::class, 'viewrequests'])->name('request.view');
 
 
 

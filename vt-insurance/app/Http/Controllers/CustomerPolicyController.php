@@ -76,6 +76,7 @@ class CustomerPolicyController extends Controller
         $customer_policy->policy_type = $policy->policy_type;
         $customer_policy->coverage_amount = $policy->coverage_amount;
         $customer_policy->premium_amount = $policy->premium_amount;
+        $customer_policy->excess_amount = $policy->excess_amount;
         $customer_policy->policy_duration = $policy->policy_duration;
 
         $customer_policy->save();
@@ -89,7 +90,7 @@ class CustomerPolicyController extends Controller
         $customer = Customers::findOrFail($customer_id);
         $policies = DB::table('customer_policies')
             ->join('policies', 'customer_policies.policy_id', '=', 'policies.id')
-            ->select('customer_policies.id', 'policies.id as policy_id', 'policies.policy_type', 'customer_policies.coverage_amount', 'customer_policies.premium_amount', 'customer_policies.policy_duration')
+            ->select('customer_policies.id', 'policies.id as policy_id', 'policies.policy_type', 'customer_policies.coverage_amount', 'customer_policies.premium_amount', 'customer_policies.policy_duration', 'customer_policies.excess_amount')
             ->where('customer_policies.customer_id', '=', $customer_id)
             ->get();
 
@@ -98,8 +99,10 @@ class CustomerPolicyController extends Controller
 
         // calculate the total coverage amount
         $totalPremiumAmount = $policies->sum('premium_amount');
+        // calculate the total coverage amount
+        $totalExcessAmount = $policies->sum('excess_amount');
 
-        return view('show', compact('customer', 'policies', 'totalPremiumAmount', 'totalCoverageAmount'));
+        return view('show', compact('customer', 'policies', 'totalPremiumAmount', 'totalCoverageAmount', 'totalExcessAmount'));
     }
 
 
@@ -134,10 +137,11 @@ class CustomerPolicyController extends Controller
     public function update(Request $request, $id)
     {
 
-        //validate input 
+        //validate input
         $request->validate([
             'coverage_amount' => 'required',
             'premium_amount' => 'required',
+            'excess_amount' => 'required',
             'policy_duration' => 'required'
         ]);
 
@@ -145,6 +149,7 @@ class CustomerPolicyController extends Controller
 
         $customerPolicy->coverage_amount = $request->input('coverage_amount');
         $customerPolicy->premium_amount = $request->input('premium_amount');
+        $customerPolicy->excess_amount = $request->input('excess_amount');
         $customerPolicy->policy_duration = $request->input('policy_duration');
 
         $customerPolicy->save();
