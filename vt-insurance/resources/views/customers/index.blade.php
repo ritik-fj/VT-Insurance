@@ -69,6 +69,9 @@
                                 <a class="btn btn-sm btn-info " href="{{ route('customers.show', $customer->id) }}">
                                     Show</a>
 
+                                <a href="{{ route('customers.assign-policy', ['customer_id' => $customer->id]) }}"
+                                    class="btn btn-sm btn-primary">Assign
+                                    Policy</a>
 
                                 <a href="{{ route('customers.policies_info', ['customer_id' => $customer->id]) }}"
                                     class="btn btn-sm btn-primary">View Policies</a>
