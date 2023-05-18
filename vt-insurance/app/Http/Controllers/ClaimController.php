@@ -82,40 +82,23 @@ class ClaimController extends Controller
     {
         //
         $claims = DB::table('claims')
-                ->select('*')
-                ->get();
-            return view('admin.viewclaims', compact('claims'));
+            ->select('*')
+            ->get();
+        return view('admin.viewclaims', compact('claims'));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Claim $claim)
+    public function claimPDF()
     {
-        //
-    }
+        $user = Auth::user();
+        $customer = Customers::where('user_id', $user->id)->first();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Claim $claim)
-    {
-        //
-    }
+        $claims = DB::table('claims')
+            ->select('*')
+            ->where('customer_id', '=', $customer->id)
+            ->get();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Claim $claim)
-    {
-        //
-    }
+        $pdf = app('dompdf.wrapper')->loadView('reports.claim', compact('customer',  'claims'));
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Claim $claim)
-    {
-        //
+        return $pdf->download('claim.pdf');
     }
 }

@@ -10,7 +10,7 @@
                 <h1 class="display-6">Your Claims</h1>
             </div>
             <div class="px-5">
-                <a href="{{ route('customers.pdf') }}" target="_blank" class="btn btn-success float-end">Download Claims
+                <a href="{{ route('claims.pdf') }}" target="_blank" class="btn btn-success float-end">Download Claims
                     Report</a>
             </div>
 

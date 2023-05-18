@@ -78,5 +78,14 @@ class CustomersTableSeeder extends Seeder
             'customer_email' => 'bale@gmail.com',
             'customer_phone' => '3828828',
         ]);
+        Customers::create([
+            'customer_fname' => 'Bruce',
+            'customer_lname' => 'Lee',
+            'customer_dob' => '1970-06-27',
+            'customer_address' => 'Suva',
+            'customer_email' => 'lee@gmail.com',
+            'customer_phone' => '9343751',
+            'user_id' => '2',
+        ]);
     }
 }

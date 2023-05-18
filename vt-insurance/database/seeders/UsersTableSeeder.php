@@ -18,27 +18,27 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             //Insurer
             [
-            'role' => 'admin',
-            'fname' => 'admin',
-            'lname' => 'admin',
-            'dob' => '1999-01-22',
-            'address' => 'Suva',
-            'phone' => '7746673',
-            'email' => 'admin@test.com',
-            'password' => Hash::make('12345678'),
+                'role' => 'admin',
+                'fname' => 'admin',
+                'lname' => 'admin',
+                'dob' => '1999-01-22',
+                'address' => 'Suva',
+                'phone' => '7746673',
+                'email' => 'admin@test.com',
+                'password' => Hash::make('12345678'),
             ],
 
-            //Customer
-         //   [
-        //    'role' => 'customer',
-        //    'fname' => 'test',
-        //    'lname' => 'test',
-        //    'dob' => '2000-01-25',
-        //    'address' => 'Suva',
-        //    'phone' => '1111111',
-        //    'email' => 'test@test.com',
-        //    'password' => Hash::make('12345678'),
-        //    ],
+            [
+                'role' => 'customer',
+                'fname' => 'Bruce',
+                'lname' => 'Lee',
+                'dob' => '1970-06-27',
+                'address' => 'Suva',
+                'phone' => '9343751',
+                'email' => 'lee@gmail.com',
+                'password' => Hash::make('12345678'),
+            ],
+
         ]);
     }
 }
