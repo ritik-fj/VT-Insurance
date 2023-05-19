@@ -101,4 +101,33 @@ class ClaimController extends Controller
 
         return $pdf->download('claim.pdf');
     }
+
+    public function manageclaims()
+    {
+
+        $claims = DB::table('claims')
+            ->select('*')
+            ->get();
+
+        return view('admin.manageclaims', compact('claims'));
+    }
+
+    public function approve_claim($id)
+    {
+        $claim = Claim::findOrFail($id);
+
+        $claim->status = 'Approved';
+        $claim->save();
+
+
+        return redirect()->route('claim.manage')->with('success', 'Claim Approved Successfully');
+    }
+    public function reject_claim($id)
+    {
+        $claim = Claim::findOrFail($id);
+        $claim->status = 'Rejected';
+        $claim->save();
+
+        return redirect()->route('claim.manage')->with('success', 'Claim Rejected Successfully');
+    }
 }

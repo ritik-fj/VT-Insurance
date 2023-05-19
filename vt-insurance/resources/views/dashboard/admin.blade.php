@@ -69,9 +69,21 @@
 
                                 <div class="col">
                                     <div class="card text-center bg-info text-white">
-                                        <a href="{{ route('claims.all') }}" class="btn">
+                                        <a href="{{ route('claim.manage') }}" class="btn">
                                             <div class="card-body">
                                                 <h5 class="lead" style="font-size: 25px"><strong> View Claims
+                                                    </strong></h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center align-items-center g-2">
+                                <div class="col">
+                                    <div class="card text-center bg-info text-white">
+                                        <a href="{{ route('request.manage') }}" class="btn">
+                                            <div class="card-body">
+                                                <h5 class="lead" style="font-size: 25px"><strong> Manage Upgrade Requests
                                                     </strong></h5>
                                             </div>
                                         </a>

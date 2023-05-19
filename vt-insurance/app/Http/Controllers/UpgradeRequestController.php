@@ -19,8 +19,6 @@ class UpgradeRequestController extends Controller
     public function store(Request $request)
     {
 
-
-
         $change = new UpgradeRequest();
         $change->customer_id = $request->input('customer_id');
         $change->policy_id = $request->input('policy_id');
@@ -50,5 +48,33 @@ class UpgradeRequestController extends Controller
             ->get();
 
         return view('customers.viewrequests', compact('requests'));
+    }
+    public function managerequests()
+    {
+
+        $requests = DB::table('upgrade_requests')
+            ->select('*')
+            ->get();
+
+        return view('admin.managerequests', compact('requests'));
+    }
+
+    public function approve_request($id)
+    {
+        $policy = UpgradeRequest::findOrFail($id);
+
+        $policy->status = 'Approved';
+        $policy->save();
+
+
+        return redirect()->route('request.manage')->with('success', 'Upgrade Approved Successfully');
+    }
+    public function reject_request($id)
+    {
+        $policy = UpgradeRequest::findOrFail($id);
+        $policy->status = 'Rejected';
+        $policy->save();
+
+        return redirect()->route('request.manage')->with('success', 'Upgrade Rejected Successfully');
     }
 }

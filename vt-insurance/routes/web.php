@@ -42,12 +42,21 @@ Route::post('/claims', [ClaimController::class, 'store'])->name('claims.store');
 Route::get('/viewclaims', [ClaimController::class, 'index'])->name('claims.index');
 Route::get('/allclaims', [ClaimController::class, 'allclaims'])->name('claims.all');
 Route::get('/claim-pdf', [ClaimController::class, 'claimPDF'])->name('claims.pdf')->middleware('auth');
+Route::get('/manageclaims', [ClaimController::class, 'manageclaims'])->name('claim.manage');
+Route::get('/approve_claim/{id}', [ClaimController::class, 'approve_claim'])->name('claim.approve');
+Route::get('/reject_claim/{id}', [ClaimController::class, 'reject_claim'])->name('claim.reject');
 
 
 //upgrade request routes
 Route::get('/upgrade-request/{id}', [UpgradeRequestController::class, 'create'])->name('request.create');
 Route::post('/upgrade-request', [UpgradeRequestController::class, 'store'])->name('request.store');
 Route::get('/viewrequests', [UpgradeRequestController::class, 'viewrequests'])->name('request.view');
+Route::get('/managerequests', [UpgradeRequestController::class, 'managerequests'])->name('request.manage');
+Route::get('/approve_request/{id}', [UpgradeRequestController::class, 'approve_request'])->name('request.approve');
+Route::get('/reject_request/{id}', [UpgradeRequestController::class, 'reject_request'])->name('request.reject');
+
+
+
 
 
 
