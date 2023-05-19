@@ -96,7 +96,6 @@ class CustomerPolicyController extends Controller
 
         // calculate the total coverage amount
         $totalCoverageAmount = $policies->sum('coverage_amount');
-
         // calculate the total coverage amount
         $totalPremiumAmount = $policies->sum('premium_amount');
         // calculate the total coverage amount
@@ -110,8 +109,7 @@ class CustomerPolicyController extends Controller
     {
         $customers = Customers::findOrFail($customer_id);
         $policies = DB::table('customer_policies')
-            ->join('policies', 'customer_policies.policy_id', '=', 'policies.id')
-            ->select('policies.id', 'policies.policy_type', 'policies.coverage_amount', 'policies.premium_amount', 'policies.policy_duration')
+            ->select('*')
             ->where('customer_policies.customer_id', '=', $customer_id)
             ->get();
 
@@ -121,7 +119,13 @@ class CustomerPolicyController extends Controller
         // calculate the total coverage amount
         $totalPremiumAmount = $policies->sum('premium_amount');
 
-        $pdf = app('dompdf.wrapper')->loadView('reports.customerdetails', compact('customers',  'policies', 'totalCoverageAmount', 'totalPremiumAmount'));
+        $totalExcessAmount = $policies->sum('excess_amount');
+
+        // Calculate the discounted premium if the number of policies is greater than 1
+        $numberOfPolicies = $policies->count();
+        $discountedpremium = $numberOfPolicies > 1 ? $totalPremiumAmount * pow(0.9, ($numberOfPolicies - 1)) : $totalPremiumAmount;
+
+        $pdf = app('dompdf.wrapper')->loadView('reports.customerdetails', compact('customers',  'policies', 'totalCoverageAmount', 'totalPremiumAmount', 'totalExcessAmount', 'discountedpremium'));
 
         return $pdf->download('customersdetails.pdf');
     }
@@ -158,9 +162,9 @@ class CustomerPolicyController extends Controller
     }
 
 
-    public function destroy($customer_id, $policy_id)
+    public function destroy($id)
     {
-        $customerPolicy = CustomerPolicy::where('customer_id', $customer_id)->where('policy_id', $policy_id)->first();
+        $customerPolicy = CustomerPolicy::where('id', $id)->first();
         if ($customerPolicy) {
             $customerPolicy->delete();
         }
@@ -181,6 +185,7 @@ class CustomerPolicyController extends Controller
                 'coverage_amount' => 'required',
                 'policy_duration' => 'required',
                 'premium_amount' => 'required',
+
             ]);
 
             $customerPolicy->update([

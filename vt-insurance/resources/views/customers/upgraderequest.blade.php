@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col">
             <div class="float-start px-4 pt-2">
-                <h1 class="display-4">Request Change</h1>
+                <h1 class="display-4">Upgrade Request</h1>
             </div>
             <div class="float-end p-2">
                 <a class="btn btn-success " href="{{ route('policies.index') }}"> View All Policy</a>
@@ -26,12 +26,12 @@
         @endif
         <form class="lead" action="{{ route('request.store') }}" method="POST">
             @csrf
-            <div class="mb-3">
+            <div class="mb-3 d-none">
                 <label class="form-label"> <strong> Policy ID</strong></label>
                 <input type="text" class="form-control" name="policy_id" value="{{ $policy->policy_id }}" readonly
                     placeholder="">
             </div>
-            <div class="mb-3">
+            <div class="mb-3 d-none">
                 <label class="form-label"> <strong> Customer ID</strong></label>
                 <input type="text" class="form-control" name="customer_id" value="{{ $policy->customer_id }}" readonly
                     placeholder="">
@@ -40,6 +40,7 @@
                 <label class="form-label"> <strong> Policy Type</strong></label>
                 <input type="text" class="form-control" name="policy_type" value="{{ $policy->policy_type }}" readonly
                     placeholder="Enter Policy Name">
+
             </div>
             <div class="mb-3">
                 <label class="form-label"> <strong>Coverage Amount</strong></label>

@@ -84,7 +84,7 @@ Route::get('/customers/assign-policy/{customer_id}', [CustomerPolicyController::
 Route::post('/customer-policies', [CustomerPolicyController::class, 'store']);
 Route::get('/customers/{customer_id}/policies', [CustomerPolicyController::class, 'showCustomerPolicies'])->name('customers.policies_info');
 Route::get('/reports/{customer_id}/customerdetails', [CustomerPolicyController::class, 'customerdetailsPDF'])->name('customerdetails.pdf')->middleware('auth');
-Route::delete('/customer/{customer_id}/policy/{policy_id}', [CustomerPolicyController::class, 'destroy'])->name('customer_policy.destroy');
+Route::delete('/customer/policy/{id}', [CustomerPolicyController::class, 'destroy'])->name('customer_policy.destroy');
 
 Route::get('/customer_policies/{id}/edit', [CustomerPolicyController::class, 'edit'])->name('edit');
 Route::put('/customer_policies/{id}', [CustomerPolicyController::class, 'update'])->name('customer_policies.update');

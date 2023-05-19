@@ -92,7 +92,16 @@ class PoliciesController extends Controller
         ]);
 
         //create a new policy
-        Policies::create($request->all());
+        $policy = new Policies();
+
+        $policy->policy_type = $request->input('policy_type');
+        $policy->coverage_amount = $request->input('coverage_amount');
+        $policy->premium_amount = $request->input('premium_amount');
+        $policy->policy_duration = $request->input('policy_duration');
+        $policy->excess_amount = $request->input('excess_amount');
+        $policy->description = $request->input('description');
+
+        $policy->save();
 
         //redirect
         return redirect()->route('policies.index')->with('success', 'Policy Created Successfully');
@@ -128,7 +137,8 @@ class PoliciesController extends Controller
             'coverage_amount' => 'required',
             'premium_amount' => 'required',
             'policy_duration' => 'required',
-
+            'excess_amount' => 'required',
+            'description' => 'required'
         ]);
 
         //finds and updates records
@@ -137,6 +147,8 @@ class PoliciesController extends Controller
         $policies->coverage_amount = $request->input('coverage_amount');
         $policies->premium_amount = $request->input('premium_amount');
         $policies->policy_duration = $request->input('policy_duration');
+        $policies->excess_amount = $request->input('excess_amount');
+        $policies->description = $request->input('description');
         $policies->save();
 
         //redirect

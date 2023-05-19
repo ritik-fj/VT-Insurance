@@ -43,10 +43,21 @@
                     placeholder="Enter Policy Amount">
             </div>
             <div class="mb-3">
+                <label class="form-label"> <strong>Excess Amount</strong></label>
+                <input type="text" class="form-control" name="excess_amount" value="{{ $policies->excess_amount }}"
+                    placeholder="Enter Excess Amount">
+            </div>
+            <div class="mb-3">
                 <label class="form-label"> <strong> Policy Duration</strong></label>
                 <input type="text" class="form-control" value="{{ $policies->policy_duration }}" name="policy_duration"
                     placeholder="Enter Policy Duration">
             </div>
+            <div class="mb-3">
+                <label class="form-label"> <strong>Description</strong></label>
+                <textarea id="description" name="description" class="form-control" value="{{ $policies->description }}" rows="3"
+                    required></textarea>
+            </div>
+
 
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

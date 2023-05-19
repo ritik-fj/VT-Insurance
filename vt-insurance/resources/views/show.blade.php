@@ -51,8 +51,7 @@
                                 <td>${{ $policy->excess_amount }}</td>
                                 <td>{{ $policy->policy_duration }}</td>
                                 <td class="text-center">
-                                    <form
-                                        action="{{ route('customer_policy.destroy', ['customer_id' => $customer->id, 'policy_id' => $policy->id]) }}"
+                                    <form action="{{ route('customer_policy.destroy', ['id' => $policy->id]) }}"
                                         method="POST">
 
                                         @csrf

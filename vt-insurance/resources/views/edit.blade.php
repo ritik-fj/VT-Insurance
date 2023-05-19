@@ -34,6 +34,11 @@
                     name="premium_amount" placeholder="Enter Premium Amount">
             </div>
             <div class="mb-3">
+                <label class="form-label"> <strong>Excess Amount:</strong></label>
+                <input type="number" class="form-control" value="{{ $customerPolicy->excess_amount }}" name="excess_amount"
+                    placeholder="Enter Excess Amount">
+            </div>
+            <div class="mb-3">
                 <label class="form-label"> <strong>Policy Duration:</strong></label>
                 <input type="text" class="form-control" value="{{ $customerPolicy->policy_duration }}"
                     name="policy_duration" placeholder="Enter Policy Duration">

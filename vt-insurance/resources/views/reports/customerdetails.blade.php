@@ -102,6 +102,7 @@
                     <th>Policy Type</th>
                     <th>Coverage Amount</th>
                     <th>Premium Amount</th>
+                    <th>Excess Amount</th>
                     <th>Policy Duration</th>
                 </tr>
             </thead>
@@ -112,6 +113,7 @@
                         <td>{{ $policy->policy_type }}</td>
                         <td>${{ $policy->coverage_amount }}</td>
                         <td>${{ $policy->premium_amount }}</td>
+                        <td>${{ $policy->excess_amount }}</td>
                         <td>{{ $policy->policy_duration }}</td>
                     </tr>
                 @endforeach
@@ -119,7 +121,9 @@
         </table>
 
         <p><strong>Total Coverage Amount: ${{ $totalCoverageAmount }}</strong></p>
-        <p><strong>Total Premium Amount: ${{ $totalPremiumAmount }}</strong></p>
+        <p><strong>Total Excess Amount: ${{ $totalExcessAmount }}</strong></p>
+        <p><strong>Total Premium Amount(Without Discount): ${{ $totalPremiumAmount }}</strong></p>
+        <p><strong>Total Premium Amount(With Discount): ${{ $discountedpremium }}</strong></p>
     @else
         <p>No policies found for this customer.</p>
     @endif
