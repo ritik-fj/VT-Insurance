@@ -41,7 +41,7 @@
             </div>
         </div>
 
-        <table class="table table-bordered bg-white mt-3">
+        <table class="table table-bordered bg-white border-dark mt-3">
             <thead class="thead-dark">
                 <tr class="lead">
 
@@ -52,8 +52,8 @@
                     <th scope="col">Claim Amount</th>
                     <th scope="col">Date of Claim</th>
                     <th scope="col">Status</th>
-
-
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -67,11 +67,14 @@
                         <td>{{ $claim->created_at }}</td>
                         <td>{{ $claim->status }}</td>
                         <td class="text-center">
+                            <a class="btn btn-success m-1" href="{{ route('claim.approve', $claim->id) }}"> Approve</a>
+                            <a class="btn btn-danger " href="{{ route('claim.reject', $claim->id) }}"> Reject</a>
+
+                        </td>
+                        <td class="text-center">
                             <form action="{{ route('claim.destroy', $claim->id) }}" method="POST">
 
                                 {{-- <a class="btn btn-info " href="{{ route('policies.show', $policy->id) }}"> Show</a> --}}
-                                <a class="btn btn-success " href="{{ route('claim.approve', $claim->id) }}"> Approve</a>
-                                <a class="btn btn-danger " href="{{ route('claim.reject', $claim->id) }}"> Reject</a>
                                 @csrf
                                 @method('DELETE')
                                 <button onclick="return confirm('Are you sure you want to delete this Claim?')"

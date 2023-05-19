@@ -101,7 +101,12 @@ class CustomerPolicyController extends Controller
         // calculate the total coverage amount
         $totalExcessAmount = $policies->sum('excess_amount');
 
-        return view('show', compact('customer', 'policies', 'totalPremiumAmount', 'totalCoverageAmount', 'totalExcessAmount'));
+        // Calculate the discounted premium if the number of policies is greater than 1
+        $numberOfPolicies = $policies->count();
+        $discountedpremium = $numberOfPolicies > 1 ? $totalPremiumAmount * pow(0.9, ($numberOfPolicies - 1)) : $totalPremiumAmount;
+
+
+        return view('show', compact('customer', 'policies', 'totalPremiumAmount', 'totalCoverageAmount', 'totalExcessAmount', 'discountedpremium'));
     }
 
 

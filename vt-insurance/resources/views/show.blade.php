@@ -80,13 +80,18 @@
                                 <td>${{ $totalCoverageAmount }}</td>
                             </tr>
                             <tr style="background-color: lightblue;">
-                                <td><strong>Total Premium Amount:</strong></td>
-                                <td>${{ $totalPremiumAmount }}</td>
-                            </tr>
-                            <tr style="background-color: lightblue;">
                                 <td><strong>Total Excess Amount:</strong></td>
                                 <td>${{ $totalExcessAmount }}</td>
                             </tr>
+                            <tr style="background-color: rgb(230, 173, 173);">
+                                <td><strong>Total Premium Amount: (Before Discount)</strong></td>
+                                <td>${{ $totalPremiumAmount }}</td>
+                            </tr>
+                            <tr style="background-color: rgb(120, 233, 120);">
+                                <td><strong>Total Premium Amount: (After Discount)</strong></td>
+                                <td>${{ $discountedpremium }}</td>
+                            </tr>
+
 
                         </tbody>
                     </table>
