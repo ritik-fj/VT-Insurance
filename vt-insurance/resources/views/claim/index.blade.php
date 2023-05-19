@@ -65,7 +65,7 @@
                         <td>{{ $claim->claim_type }}</td>
                         <td>{{ $claim->claim_amount }}</td>
                         <td>{{ $claim->created_at }}</td>
-                        <td class="bg-info">{{ $claim->status }}</td>
+                        <td>{{ $claim->status }}</td>
                         <td class="">
 
                         </td>

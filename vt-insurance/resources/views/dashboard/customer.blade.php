@@ -92,7 +92,6 @@
                                     </div>
                                 </div>
 
-
                                 <div class="col p-3">
                                     <div class="card text-center text-white" style="background-color: #184949">
                                         <a href="{{ route('request.view') }}" class="btn text-light">

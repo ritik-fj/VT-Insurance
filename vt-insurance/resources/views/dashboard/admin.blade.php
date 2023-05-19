@@ -60,7 +60,7 @@
                                     <div class="card text-center bg-info text-white">
                                         <a href="{{ route('viewpremiums') }}" class="btn">
                                             <div class="card-body">
-                                                <h5 class="lead" style="font-size: 25px"><strong> View Premiums
+                                                <h5 class="lead" style="font-size: 25px"><strong> Active Policies
                                                     </strong></h5>
                                             </div>
                                         </a>

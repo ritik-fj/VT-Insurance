@@ -130,4 +130,14 @@ class ClaimController extends Controller
 
         return redirect()->route('claim.manage')->with('success', 'Claim Rejected Successfully');
     }
+
+    public function destroy($id)
+    {
+        //deletes the record
+        $claim = Claim::find($id);
+        $claim->delete();
+
+        //redirect
+        return redirect()->route('claim.manage')->with('success', 'Claim Deleted Successfully');
+    }
 }

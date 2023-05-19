@@ -24,17 +24,21 @@
             @method('PUT')
 
             <div class="mb-3">
+                <label class="form-label"> <strong>Coverage Amount:</strong></label>
+                <input type="number" step="any" class="form-control" value="{{ $customerPolicy->coverage_amount }}"
+                    name="coverage_amount" placeholder="Enter Coverage Amount">
+            </div>
+            <div class="mb-3">
                 <label class="form-label"> <strong>Premium Amount:</strong></label>
-                <input type="number" class="form-control" value="{{ $customerPolicy->premium_amount }}" name="premium_amount"
-                    placeholder="Enter Premium Amount">
+                <input type="number" class="form-control" value="{{ $customerPolicy->premium_amount }}"
+                    name="premium_amount" placeholder="Enter Premium Amount">
             </div>
 
             <div class="mb-3">
-                <label class="form-label"> <strong>Coverage Amount:</strong></label>
-                <input type="number" step="any" class="form-control" value="{{ $customerPolicy->coverage_amount }}"
-                    name="coverage_amount" placeholder="Enter Coverage Amount" readonly>
+                <label class="form-label"> <strong>Excess Amount:</strong></label>
+                <input type="excess_amount" class="form-control" value="{{ $customerPolicy->premium_amount }}"
+                    name="excess_amount" placeholder="Enter Premium Amount">
             </div>
-
             <div class="mb-3">
                 <label class="form-label"> <strong>Policy Duration:</strong></label>
                 <input type="text" class="form-control" value="{{ $customerPolicy->policy_duration }}"

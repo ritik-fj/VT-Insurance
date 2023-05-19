@@ -45,6 +45,7 @@ Route::get('/claim-pdf', [ClaimController::class, 'claimPDF'])->name('claims.pdf
 Route::get('/manageclaims', [ClaimController::class, 'manageclaims'])->name('claim.manage');
 Route::get('/approve_claim/{id}', [ClaimController::class, 'approve_claim'])->name('claim.approve');
 Route::get('/reject_claim/{id}', [ClaimController::class, 'reject_claim'])->name('claim.reject');
+Route::delete('/claim_delete/{id}', [ClaimController::class, 'destroy'])->name('claim.destroy')->middleware('auth');
 
 
 //upgrade request routes

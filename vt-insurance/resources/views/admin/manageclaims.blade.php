@@ -34,9 +34,9 @@
         <div class="row justify-content-center align-items-center g-2">
             <div class="col">
 
-                <div class="float-start">
+                {{-- <div class="float-start">
                     <a class="btn btn-success" href="{{ route('claims.create') }}"> Create New Claim</a>
-                </div>
+                </div> --}}
 
             </div>
         </div>
@@ -67,9 +67,16 @@
                         <td>{{ $claim->created_at }}</td>
                         <td>{{ $claim->status }}</td>
                         <td class="text-center">
-                            {{-- <a class="btn btn-info " href="{{ route('policies.show', $policy->id) }}"> Show</a> --}}
-                            <a class="btn btn-success " href="{{ route('claim.approve', $claim->id) }}"> Approve</a>
-                            <a class="btn btn-danger " href="{{ route('claim.reject', $claim->id) }}"> Reject</a>
+                            <form action="{{ route('claim.destroy', $claim->id) }}" method="POST">
+
+                                {{-- <a class="btn btn-info " href="{{ route('policies.show', $policy->id) }}"> Show</a> --}}
+                                <a class="btn btn-success " href="{{ route('claim.approve', $claim->id) }}"> Approve</a>
+                                <a class="btn btn-danger " href="{{ route('claim.reject', $claim->id) }}"> Reject</a>
+                                @csrf
+                                @method('DELETE')
+                                <button onclick="return confirm('Are you sure you want to delete this Claim?')"
+                                    type="submit" class="btn  btn-sm btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

@@ -48,7 +48,7 @@ class CustomerPolicyController extends Controller
             $premiums = DB::table('customer_policies')
                 ->join('policies', 'customer_policies.policy_id', '=', 'policies.id')
                 ->join('customers', 'customer_policies.customer_id', '=', 'customers.id')
-                ->select('customer_policies.id', 'policies.id as policy_id', 'policies.policy_type', 'customer_policies.coverage_amount', 'customer_policies.premium_amount', 'customer_policies.policy_duration', 'customers.customer_fname', 'customers.customer_lname')
+                ->select('*')
                 ->get();
         }
 
@@ -185,6 +185,7 @@ class CustomerPolicyController extends Controller
                 'coverage_amount' => 'required',
                 'policy_duration' => 'required',
                 'premium_amount' => 'required',
+                'excess_amount' => 'required',
 
             ]);
 
@@ -192,6 +193,8 @@ class CustomerPolicyController extends Controller
                 'coverage_amount' => $request->input('coverage_amount'),
                 'policy_duration' => $request->input('policy_duration'),
                 'premium_amount' => $request->input('premium_amount'),
+                'excess_amount' => $request->input('excess_amount'),
+
             ]);
 
             return redirect('viewpremiums')->with('success', 'Premium updated successfully!');
