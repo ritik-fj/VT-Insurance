@@ -127,8 +127,39 @@
     @else
         <p>No policies found for this customer.</p>
     @endif
+
+    <hr>
+
+    <h3>Customer's Claims</h3>
+    @if ($claims->count() > 0)
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Claim ID</th>
+                    <th>Claim Type</th>
+                    <th>Claim Amount</th>
+                    <th>Claim Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($claims as $claim)
+                    <tr>
+                        <td>{{ $claim->id }}</td>
+                        <td>{{ $claim->claim_type }}</td>
+                        <td>${{ $claim->claim_amount }}</td>
+                        <td>{{ $claim->created_at }}</td>
+                        <td>{{ $claim->status }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <p>There are no claims made by this customer.</p>
+    @endif
+
     <br>
-    <br>
+
     <hr>
     <div class="footer">
         <h1 class="display-6 text-center"><small>Contact Us</small> </h1>

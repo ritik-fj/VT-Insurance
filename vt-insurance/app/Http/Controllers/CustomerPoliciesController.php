@@ -70,6 +70,12 @@ class CustomerPoliciesController extends Controller
     public function customerdetailsPDF($customer_id)
     {
         $customers = User::findOrFail($customer_id);
+
+        $claims = DB::table('claims')
+            ->select('*')
+            ->where('customer_id', '=', $customer_id)
+            ->get();
+
         $policies = DB::table('customer_policies')
             ->select('*')
             ->where('customer_policies.customer_id', '=', $customer_id)
@@ -92,7 +98,8 @@ class CustomerPoliciesController extends Controller
         $totalExcessAmount = round($totalExcessAmount, 2);
 
 
-        $pdf = app('dompdf.wrapper')->loadView('reports.customerdetails', compact('customers',  'policies', 'totalCoverageAmount', 'totalPremiumAmount', 'totalExcessAmount', 'discountedpremium'));
+        $pdf = app('dompdf.wrapper')
+            ->loadView('reports.customerdetails', compact('customers',  'policies', 'totalCoverageAmount', 'totalPremiumAmount', 'totalExcessAmount', 'discountedpremium', 'claims'));
 
         return $pdf->download('customersdetails.pdf');
     }

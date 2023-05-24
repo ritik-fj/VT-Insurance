@@ -10,6 +10,7 @@ class Claim extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'customer_id',
         'policy_id',
         'description',
