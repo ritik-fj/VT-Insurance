@@ -6,7 +6,7 @@
     <div class="row px-4">
         <div class="col-lg-12 margin-tb">
             <div class="float-end">
-                <a class="btn btn-success" href="{{ route('admin.managecustomers') }}">Back to Dashboard</a>
+                <a class="btn btn-success" href="{{ route('admin.dashboard') }}">Back to Dashboard</a>
             </div>
         </div>
     </div>
