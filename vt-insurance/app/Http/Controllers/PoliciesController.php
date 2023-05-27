@@ -147,7 +147,7 @@ class PoliciesController extends Controller
         $policies->save();
 
         //redirect
-        return redirect()->route('adminmanagepolicies')->with('success', 'Policy Updated Successfully');
+        return redirect()->route('managepolicies')->with('success', 'Policy Updated Successfully');
     }
 
     /**
