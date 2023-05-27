@@ -7,7 +7,7 @@
         <div class="col-lg-12 margin-tb">
 
             <div class="float-end">
-                <a class="btn btn-success" href="{{ route('admin.managecustomers') }}">Back to Dashboard</a>
+                <a class="btn btn-success" href="{{ route('admin.managecustomers') }}">Back to All Customers</a>
             </div>
 
         </div>
