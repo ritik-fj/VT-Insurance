@@ -86,11 +86,15 @@ class ClaimsController extends Controller
 
     public function claimPDF()
     {
-        $customer = Auth::id();
+        $customer = DB::table('users')
+            ->select('*')
+            ->where('id', '=', Auth::id())
+            ->first();
+
 
         $claims = DB::table('claims')
             ->select('*')
-            ->where('customer_id', '=', $customer)
+            ->where('customer_id', '=', Auth::id())
             ->get();
 
         $pdf = app('dompdf.wrapper')->loadView('reports.claim', compact('customer',  'claims'));
