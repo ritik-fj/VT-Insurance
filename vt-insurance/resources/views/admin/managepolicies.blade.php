@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        <table class="table table-bordered border-dark table-hover mt-2">
+        <table class="table bg-white table-bordered border-dark table-hover mt-2">
             <thead class="thead-dark">
                 <tr class="lead">
                     <th scope="col">Policy Type</th>

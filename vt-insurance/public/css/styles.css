@@ -1,0 +1,7 @@
+.btn:hover img {
+    filter: brightness(1);
+}
+
+.btn:hover span {
+    font-weight: bold;
+}

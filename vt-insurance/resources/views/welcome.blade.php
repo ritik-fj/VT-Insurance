@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 <!-- @section('sidebar')
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @parent -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @parent -->
 
     <!-- <p>This is appended to the master sidebar.</p> -->
 <!-- @stop -->
@@ -18,7 +18,6 @@
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
                 <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-
             </div>
 
             <!-- The slideshow/carousel -->
@@ -27,24 +26,17 @@
                     <img src="{{ asset('images/accident.jpg') }}" alt="Motor Vehile Accident" class="d-block"
                         style="width:100%">
                     <div class="carousel-caption">
-                        <div class="bg-dark border rounded " style="opacity: 0.9;">
-                            <h1 class="display-6 pt-2"><strong>MOTOR VEHICLE INSURANCE</strong></h1>
-                            <p class="lead" style="font-size: 18px;">
-                                Drive with confidence knowing that you and your car are protected with our
-                                comprehensive car insurance.<br> Don't let unexpected accidents ruin your journey, get
-                                insured
-                                today..</p>
+                        <div class="bg-dark container fluid border rounded" style="opacity: 0.9;">
+                            <h1 class="display-6 pt-2">BEST VEHICLE INSURANCE</h1>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item" data-bs-interval="3000">
-                    <img src="{{ asset('images/car_insure.jpg') }}" alt="Happy Customer" class="d-block" style="width:100%">
+                    <img src="{{ asset('images/car_insure.jpg') }}" alt="Happy Customer" class="d-block img-fluid"
+                        style="width:100%">
                     <div class="carousel-caption">
                         <div class="bg-dark border rounded " style="opacity: 0.9;">
-                            <h1 class="display-6  pt-2"><strong> GET INSURED NOW</strong></h1>
-                            <p class="lead" style="font-size: 18px;">
-                                Secure your ride and your peace of mind with our reliable car insurance
-                                coverage. <br> We've got you covered so you can enjoy the road ahead.</p>
+                            <h1 class="display-6  pt-2">GET INSURED NOW</h1>
                         </div>
                     </div>
                 </div>
@@ -59,43 +51,47 @@
             </button>
         </div>
 
-        <div class="container">
+        <div class="container p-1">
 
-
-
-            <!-- START THE FEATURETTES -->
-
-            <hr class="featurette-divider">
-            <br>
-            <div class="row border align-items-center bg-white">
-                <div class="col  p-3">
-                    <h1 class="text-center display-5">We got you covered</h1>
-                    <p class="lead">VT Insurance is a locally owned insurance company for FIjians.
-                        Together we build this country we call our home and together we grow, for without you,
-                        we would simply be a company without a soul. You are our soul. You make us tick.
-                        You make us innovate to serve you better. And when we Fijians stand together, our strength as a
-                        nation will be incomparable. Protecting yourself, your family, and your assets is important. We
-                        offer a wide range of insurance options to help you find the coverage you need.</p>
-                    <div class="text-center">
-                        <a href="{{ route('viewpolicies') }}" class="btn btn-primary">
-                            View Our Policies</a>
+            <div class="container pt-3">
+                <div class="row align-items-center">
+                    <div class="col-md text-center">
+                        <h1 class="text-center display-5"><strong>We got you covered
+                                <hr>
+                            </strong> </h1>
+                        <p class="lead">VT Insurance is a locally owned insurance company for Fijians. Together we build
+                            this country we call our home and together we grow, for without you, we would simply be a
+                            company without a soul. You are our soul. You make us tick. You make us innovate to serve you
+                            better. And when we Fijians stand together, our strength as a nation will be incomparable.
+                            Protecting yourself, your family, and your assets is important. We offer a wide range of
+                            insurance options to help you find the coverage you need.</p>
+                    </div>
+                    <div class="col-md text-center">
+                        <a href="{{ route('viewpolicies') }}" class="btn"
+                            style="position: relative; display: inline-block;">
+                            <img src="{{ asset('images/insurance.jpg') }}" alt="Insurance" class="img-fluid rounded-3"
+                                style="filter: brightness(0.5);">
+                            <span class="display-5"
+                                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; z-index: 1;">View
+                                Our Policies</span>
+                        </a>
                     </div>
 
                 </div>
-                <div class="col p-2">
-                    <img src="{{ asset('images/insurance.jpg') }}" alt="Insurance" class="img-fluid rounded-pill">
-                </div>
             </div>
-        </div>
 
-        <div class="mt-4 p-5 rounded container">
-            <div class="row border align-items-center bg-white">
-                <div class="col p-2">
-                    <img src="{{ asset('images/insure.jpg') }}" alt="Insurance" class="img-fluid rounded-pill">
+
+            <hr>
+            <div class="row justify-content-center align-items-center g-2 ">
+
+                <div class="col-md m-2">
+                    <img src="{{ asset('images/insure.jpg') }}" alt="Insurance" class="img-fluid rounded-3">
                 </div>
-                <div class="col p-3">
-                    <h1 class="display-5">Why Choose Us?</h1>
-                    <ul class="lead">
+                <div class="col-md px-4">
+                    <h1 class="display-5 text-center pt-3"> <strong> Why Choose Us?
+                            <hr>
+                        </strong></h1>
+                    <ul class="lead text-center">
                         <li>Flexible coverage options</li>
                         <li>Competitive pricing</li>
                         <li>Exceptional customer service</li>
@@ -103,6 +99,8 @@
                     </ul>
                 </div>
             </div>
+
         </div>
+
     </div>
 @stop

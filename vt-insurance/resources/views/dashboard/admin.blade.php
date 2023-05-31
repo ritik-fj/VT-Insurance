@@ -28,16 +28,15 @@
 
 
                         <div class="row justify-content-center align-items-center g-2">
-                            <div class="col p-3">
+                            <div class="col">
                                 <div class="card text-center text-white" style="background-color: #184949">
                                     <div class="card-body">
                                         <h5 class="card-title">Customers</h5>
                                         <p class="card-text">We currently have <span
                                                 class="fw-bold">{{ $customersCount }}</span>
                                             customers.</p>
-                                        <a href="{{ route('admin.managecustomers') }}" class="btn btn-info me-3">Manage
+                                        <a href="{{ route('admin.managecustomers') }}" class="btn btn-info ">Manage
                                             Customers</a>
-
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +48,6 @@
                                                 class="fw-bold">{{ $policiesCount }}</span>
                                             policies.</p>
                                         <a href="{{ route('managepolicies') }}" class="btn btn-info">Manage Policies</a>
-
                                     </div>
                                 </div>
                             </div>

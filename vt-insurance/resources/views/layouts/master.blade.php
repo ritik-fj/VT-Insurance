@@ -97,7 +97,7 @@
             </div>
         </nav>
 
-        <main class="py-2 bg-light" style="margin-top: 70px;">
+        <main class="py-2 bg-white" style="margin-top: 70px;">
             @yield('content')
         </main>
         <br><br>
