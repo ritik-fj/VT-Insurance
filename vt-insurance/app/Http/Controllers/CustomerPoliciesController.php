@@ -29,9 +29,6 @@ class CustomerPoliciesController extends Controller
         return view('admin.activepolicies', compact('policies', 'search'));
     }
 
-
-
-
     public function assignPolicy($customer_id)
     {
         $customer = User::find($customer_id);

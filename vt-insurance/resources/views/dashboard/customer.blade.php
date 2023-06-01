@@ -99,6 +99,17 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row justify-content-center align-items-center g-2">
+                                <div class="col pt-2">
+                                    <div class="card text-center text-white" style="background-color: #184949">
+                                        <a href="{{ route('customer.mypayments') }}" class="btn text-light">
+                                            <div class="card-body">
+                                                <h5 class="card-title">My Payments</h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

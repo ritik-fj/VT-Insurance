@@ -6,6 +6,7 @@ use App\Http\Controllers\ClaimsController;
 use App\Http\Controllers\CustomerDashboardController;
 use App\Http\Controllers\CustomerPoliciesController;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\PoliciesController;
 use App\Http\Controllers\UpgradeRequestsController;
 
@@ -82,6 +83,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/upgrade-request/{id}', [UpgradeRequestsController::class, 'create'])->name('request.create');
         Route::post('/upgrade-request', [UpgradeRequestsController::class, 'store'])->name('request.store');
         Route::get('/viewrequests', [UpgradeRequestsController::class, 'viewrequests'])->name('request.view');
+        Route::get('/makepayment/{id}', [PaymentsController::class, 'makepayment'])->name('customer.makepayment');
+        Route::post('/storepayment', [PaymentsController::class, 'storepayment'])->name('payment.store');
+        Route::get('/mypayments', [PaymentsController::class, 'mypayments'])->name('customer.mypayments');
+        Route::get('/payments-pdf', [PaymentsController::class, 'paymentsPDF'])->name('customer.paymentspdf');
+
+
 
 
         // Add more customer routes here

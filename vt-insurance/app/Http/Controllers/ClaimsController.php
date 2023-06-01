@@ -91,7 +91,6 @@ class ClaimsController extends Controller
             ->where('id', '=', Auth::id())
             ->first();
 
-
         $claims = DB::table('claims')
             ->select('*')
             ->where('customer_id', '=', Auth::id())

@@ -44,9 +44,11 @@
                         </td>
                         <td class="text-center">
                             @if ($policy->premium_amount == 0)
-                                <button type="button" class="btn btn-success" disabled>Pay Premium</button>
-                            @else
-                                <a href="#" class="btn btn-success">Pay Premium</a>
+                                <a type="button" href="{{ route('customer.makepayment', $policy->id) }}"
+                                    class="btn btn-success">Pay Premium</button>
+                                @else
+                                    <a type="button" href="{{ route('customer.makepayment', $policy->id) }}"
+                                        class="btn btn-success">Pay Premium</button>
                             @endif
                         </td>
 
