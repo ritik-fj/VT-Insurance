@@ -81,8 +81,19 @@
                                     <div class="card text-center bg-info text-white">
                                         <a href="{{ route('request.manage') }}" class="btn">
                                             <div class="card-body">
-                                                <h5 class="lead" style="font-size: 25px"><strong> Manage Upgrade Requests
+                                                <h5 class="lead" style="font-size: 25px"><strong> Upgrade Requests
                                                     </strong></h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card text-center bg-info text-white">
+                                        <a href="{{ route('admin.viewpayments') }}" class="btn">
+                                            <div class="card-body">
+                                                <h5 class="lead" style="font-size: 25px"><strong> View Payments
+                                                    </strong>
+                                                </h5>
                                             </div>
                                         </a>
                                     </div>

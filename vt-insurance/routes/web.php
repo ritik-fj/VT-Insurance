@@ -44,6 +44,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         }
     })->name('dashboard');
 
+
+    //this has all the routes that are accessible by the admin
     Route::prefix('admin')->middleware('role:admin')->group(function () {
         Route::get('/policies', [PoliciesController::class, 'index'])->name('managepolicies');
         Route::get('/activepolicies', [CustomerPoliciesController::class, 'index'])->name('activepolicies');
@@ -69,8 +71,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/approve_request/{id}', [UpgradeRequestsController::class, 'approve_request'])->name('request.approve');
         Route::get('/reject_request/{id}', [UpgradeRequestsController::class, 'reject_request'])->name('request.reject');
         Route::get('/reports/{customer_id}/customerdetails', [CustomerPoliciesController::class, 'customerdetailsPDF'])->name('customerdetails.pdf');
+        Route::get('/allpayments', [PaymentsController::class, 'index'])->name('admin.viewpayments');
     });
 
+
+    //this has all the routes that are accessible by the customer
     Route::prefix('customer')->middleware('role:customer')->group(function () {
         Route::get('/dashboard', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
         Route::get('/myclaims', [ClaimsController::class, 'myclaims'])->name('myclaims');
