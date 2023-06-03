@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Claim;
 use App\Models\CustomerPolicy;
+use App\Models\Notification;
 use App\Models\Policies;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -177,9 +178,9 @@ class CustomerPoliciesController extends Controller
         $policy->save();
 
         $claims = DB::table('claims')
-        ->select('*')
-        ->where('customer_id', '=', $policy->customer_id)
-        ->get();
+            ->select('*')
+            ->where('customer_id', '=', $policy->customer_id)
+            ->get();
 
         if ($claims->count() >= 1) {
             $policy->premium_amount = round($policy->premium_amount * 1.10);
@@ -188,13 +189,19 @@ class CustomerPoliciesController extends Controller
             $policy->balance = $policy->premium_amount;
             $policy->save();
 
-            error_log('Premium increased by 10%');
+            $notification = new Notification();
+            $notification->customer_id = $policy->customer_id;
+            $notification->message = $policy->policy_type . ' Policy has been renewed. Premium and Excess amounts are increased by 10%, please call us on 9696969 for more information.';
+            $notification->save();
+
             return redirect()->route('activepolicies')->with('success', 'Policy Renewed Successfully.
             Premium and Excess amounts are increased by 10%');
-
-
         } else {
             error_log('Premium amount remains the same');
+            $notification = new Notification();
+            $notification->customer_id = $policy->customer_id;
+            $notification->message = $policy->policy_type . ' Policy has been renewed. Please call us on 9696969 if more information is needed.';
+            $notification->save();
         }
 
         return redirect()->route('activepolicies')->with('success', 'Policy Renewed Successfully');
@@ -205,6 +212,10 @@ class CustomerPoliciesController extends Controller
         $policy->status = 'Canceled';
         $policy->save();
 
+        $notification = new Notification();
+        $notification->customer_id = $policy->customer_id;
+        $notification->message = $policy->policy_type . ' Policy has been canceled, please call us on 9696969 for more information.';
+        $notification->save();
         return redirect()->route('activepolicies')->with('success', 'Policy Canceled Successfully');
     }
 

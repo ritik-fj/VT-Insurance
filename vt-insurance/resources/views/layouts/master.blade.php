@@ -60,12 +60,15 @@
                             @endif
                         @else
                             @if (Auth::user()->role === 'admin')
-                                <li class="nav-item">
+                                <li class="nav-item lead">
                                     <a class="nav-link" href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
                                 </li>
                             @elseif (Auth::user()->role === 'customer')
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('customer.dashboard') }}">Customer Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('notifications') }}">Notifications</a>
                                 </li>
                             @endif
 

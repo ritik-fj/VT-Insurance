@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ClaimsController;
@@ -96,6 +97,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/mypayments', [PaymentsController::class, 'mypayments'])->name('customer.mypayments');
         Route::get('/payments-pdf', [PaymentsController::class, 'paymentsPDF'])->name('customer.paymentspdf');
         Route::get('/reports/myreport', [CustomerDashboardController::class, 'myreport'])->name('myreport');
+        Route::get('/notifications', [NotificationController::class, 'show'])->name('notifications');
 
 
         // Add more customer routes here

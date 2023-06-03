@@ -21,10 +21,11 @@
                     <div class="card-header">
                         <h1 class="display-6 text-center">Welcome to the Customer Dashboard</h1>
                     </div>
-                    <div class="col">
-                        <a name="" id="" class="btn btn-info float-end mx-2 mt-2" href="{{ route('myreport') }}" role="button">Download Your Detailed Report</a>
-                        <div class="container border float-start rounded-3 border-warning p-2  mt-2">
-                            <strong>Total Premiums Balance: ${{$balance}}</strong>
+                    <div class="col ">
+                        <div class="container text-center border float-start rounded-3 border-warning p-2  mt-2">
+                            <strong>Total Premiums Balance: ${{ $balance }}</strong><br>
+                            <a name="" id="" class="btn btn-info text-center mx-2 mt-2"
+                            href="{{ route('myreport') }}" role="button">Download Your Detailed Report</a>
 
                         </div>
                     </div>
@@ -35,7 +36,6 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-
 
 
                         <div class="container border rounded-3 my-2">
@@ -68,6 +68,27 @@
                         </div>
 
                         <div class="container">
+                            <div class="row justify-content-center align-items-center g-2">
+                                <div class="col pt-2">
+                                    <div class="card text-center text-white" style="background-color: #184949">
+                                        <a href="{{ route('notifications') }}" class="btn text-light">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Notifications</h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col pt-2">
+                                    <div class="card text-center text-white" style="background-color: #184949">
+                                        <a href="{{ route('customer.mypayments') }}" class="btn text-light">
+                                            <div class="card-body">
+                                                <h5 class="card-title">My Payments</h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
                             <div class="row justify-content-center align-items-center g-2">
                                 <div class="col pt-2">
                                     <div class="card text-center text-white" style="background-color: #184949">
@@ -109,17 +130,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row justify-content-center align-items-center g-2">
-                                <div class="col pt-2">
-                                    <div class="card text-center text-white" style="background-color: #184949">
-                                        <a href="{{ route('customer.mypayments') }}" class="btn text-light">
-                                            <div class="card-body">
-                                                <h5 class="card-title">My Payments</h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
