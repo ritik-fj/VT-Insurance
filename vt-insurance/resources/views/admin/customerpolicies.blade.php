@@ -37,6 +37,7 @@
                             <th>Coverage Amount</th>
                             <th>Premium Amount</th>
                             <th>Excess Amount</th>
+                            <th>Balance</th>
                             <th>Policy Duration</th>
                         </tr>
                     </thead>
@@ -48,6 +49,7 @@
                                 <td>${{ $policy->coverage_amount }}</td>
                                 <td>${{ $policy->premium_amount }}</td>
                                 <td>${{ $policy->excess_amount }}</td>
+                                <td>${{ $policy->balance }}</td>
                                 <td>{{ $policy->policy_duration }}</td>
                                 <td class="text-center">
                                     <form action="{{ route('customer_policy.destroy', ['id' => $policy->id]) }}"

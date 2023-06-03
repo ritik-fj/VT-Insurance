@@ -20,6 +20,7 @@
                     <th>Premium Amount</th>
                     <th>Policy Duration</th>
                     <th>Excess Amount</th>
+                    <th>Balance</th>
                     <th></th>
                     <th></th>
 
@@ -30,16 +31,16 @@
                     <tr class="table  border-dark">
                         <td>{{ $policy->policy_id }}</td>
                         <td>{{ $policy->policy_type }}</td>
-                        <td>{{ $policy->coverage_amount }}</td>
-                        <td>{{ $policy->premium_amount }}</td>
+                        <td>${{ $policy->coverage_amount }}</td>
+                        <td>${{ $policy->premium_amount }}</td>
                         <td>{{ $policy->policy_duration }}</td>
-                        <td>{{ $policy->excess_amount }}</td>
+                        <td>${{ $policy->excess_amount }}</td>
+                        <td>${{ $policy->balance }}</td>
 
                         <td class="text-center">
 
                             <a href="{{ route('request.create', $policy->id) }}" class="btn btn-primary">Request
                                 Change</a>
-
 
                         </td>
                         <td class="text-center">

@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col">
             <div class="float-start px-5">
-                <h1 class="display-6">Your Claims</h1>
+                <h1 class="display-6">Manage Claims</h1>
             </div>
             <div class="px-5">
                 <a href="{{ route('claims.pdf') }}" target="_blank" class="btn btn-success float-end">Download Claims

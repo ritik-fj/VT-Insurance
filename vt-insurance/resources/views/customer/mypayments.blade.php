@@ -17,6 +17,16 @@
 
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <div class="float-start px-5">
+            </div>
+            <div class="px-5">
+                <a href="{{ route('mypolicies') }}" target="_blank" class="btn btn-success float-end">Make New Payment</a>
+            </div>
+
+        </div>
+    </div>
 
     @if ($message = Session::get('success'))
         <div class="p-2">

@@ -50,8 +50,14 @@ class PaymentsController extends Controller
         $payment->amount_paid = $request->input('amount_paid');
         $payment->customer_id = Auth::id();
         $payment->policy_id = $request->input('policy_id');
-
         $payment->save();
+
+        // Update customer_policies table
+    $customerPolicy = CustomerPolicy::find($request->input('policy_id'));
+    if ($customerPolicy) {
+        $customerPolicy->balance = $customerPolicy->balance - $payment->amount_paid;
+        $customerPolicy->save();
+    }
 
         //redirect
         return redirect()->route('customer.mypayments')->with('success', 'Payment Made Successfully');

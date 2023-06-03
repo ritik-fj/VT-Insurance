@@ -52,7 +52,7 @@ class CustomerPoliciesController extends Controller
         $customer_policy->excess_amount = $policy->excess_amount;
         $customer_policy->policy_duration = $policy->policy_duration;
         $customer_policy->description = $policy->description;
-
+        $customer_policy->balance = $policy->premium_amount;
 
         $customer_policy->save();
 

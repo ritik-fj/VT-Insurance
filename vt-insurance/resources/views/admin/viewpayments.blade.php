@@ -28,6 +28,9 @@
                         <td>{{ $payment->policy_id }}</td>
                         <td>${{ $payment->amount_paid }}</td>
                         <td>{{ $payment->created_at }}</td>
+                        <td>
+                            <a href="" class="btn btn-primary m-1">Refund</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

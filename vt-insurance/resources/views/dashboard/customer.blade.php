@@ -25,7 +25,12 @@
                             </div>
                         @endif
 
-                        <div class="container border">
+                        <div class="container border rounded-3 my-2 border-warning p-2">
+                            <strong>Total Premiums Balance: ${{$balance}}</strong>
+
+                        </div>
+
+                        <div class="container border rounded-3 my-2">
                             <div class="">
                                 <table class="table">
                                     <tbody>
@@ -50,9 +55,6 @@
                                             <td>{{ $user->email }}</td>
                                         </tr>
                                     </tbody>
-                                    <tfoot>
-
-                                    </tfoot>
                                 </table>
                             </div>
                         </div>

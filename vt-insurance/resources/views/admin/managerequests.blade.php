@@ -11,6 +11,9 @@
             <h1 class="display-6">My Change Requests</h1>
         </div>
         <hr>
+        @if ($requests->isEmpty())
+            <p>There are no change requests at the moment.</p>
+        @else
         <table class="table table-bordered bg-white border-dark">
             <thead>
                 <tr>
@@ -25,6 +28,8 @@
                 </tr>
             </thead>
             <tbody>
+
+
                 @foreach ($requests as $request)
                     <tr class="table  border-dark">
                         <td>{{ $request->policy_id }}</td>
@@ -44,6 +49,8 @@
                 @endforeach
             </tbody>
         </table>
+        @endif
+
         <hr>
     </div>
 @stop
