@@ -67,8 +67,8 @@
                         <td>{{ $claim->created_at }}</td>
                         <td>{{ $claim->status }}</td>
                         <td class="text-center">
-                            <a class="btn btn-success m-1" href="{{ route('claim.approve', $claim->id) }}"> Approve</a>
-                            <a class="btn btn-danger " href="{{ route('claim.reject', $claim->id) }}"> Reject</a>
+                            <a class="btn btn-success btn-sm m-1" href="{{ route('claim.approve', $claim->id) }}"> Approve</a>
+                            <a class="btn btn-danger btn-sm" href="{{ route('claim.reject', $claim->id) }}"> Reject</a>
 
                         </td>
                         <td class="text-center">

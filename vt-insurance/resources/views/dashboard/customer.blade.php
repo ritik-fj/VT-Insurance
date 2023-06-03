@@ -3,7 +3,9 @@
 @section('title', 'Customer Dashboard')
 
 @section('content')
+
     <div class="container lead">
+
         <div class="row justify-content-center">
             <div class="col-md-8">
                 @if ($message = Session::get('success'))
@@ -13,12 +15,19 @@
                         </div>
                     </div>
                 @endif
+
                 <div class="card">
+
                     <div class="card-header">
                         <h1 class="display-6 text-center">Welcome to the Customer Dashboard</h1>
                     </div>
+                    <div class="col">
+                        <a name="" id="" class="btn btn-info float-end mx-2 mt-2" href="{{ route('myreport') }}" role="button">Download Your Detailed Report</a>
+                        <div class="container border float-start rounded-3 border-warning p-2  mt-2">
+                            <strong>Total Premiums Balance: ${{$balance}}</strong>
 
-                    <a name="" id="" class="btn btn-primary" href="{{ route('myreport') }}" role="button">Download YOur Detailed Report</a>
+                        </div>
+                    </div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -27,10 +36,7 @@
                             </div>
                         @endif
 
-                        <div class="container border rounded-3 my-2 border-warning p-2">
-                            <strong>Total Premiums Balance: ${{$balance}}</strong>
 
-                        </div>
 
                         <div class="container border rounded-3 my-2">
                             <div class="">

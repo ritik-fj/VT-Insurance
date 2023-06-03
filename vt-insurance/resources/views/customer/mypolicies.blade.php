@@ -21,6 +21,7 @@
                     <th>Policy Duration</th>
                     <th>Excess Amount</th>
                     <th>Balance</th>
+                    <th>Status</th>
                     <th></th>
                     <th></th>
 
@@ -36,6 +37,7 @@
                         <td>{{ $policy->policy_duration }}</td>
                         <td>${{ $policy->excess_amount }}</td>
                         <td>${{ $policy->balance }}</td>
+                        <td>{{ $policy->status }}</td>
 
                         <td class="text-center">
 

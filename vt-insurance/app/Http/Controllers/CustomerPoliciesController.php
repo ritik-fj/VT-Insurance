@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Claim;
 use App\Models\CustomerPolicy;
 use App\Models\Policies;
 use App\Models\User;
@@ -166,6 +167,45 @@ class CustomerPoliciesController extends Controller
         $customerPolicy->save();
 
         return redirect()->route('customer.viewpolicies', ['id' => $customerPolicy->customer_id])->with('success', 'Customer policy updated successfully!');
+    }
+
+    public function renew_policy($id)
+    {
+        $policy = CustomerPolicy::findOrFail($id);
+
+        $policy->status = 'Renewed';
+        $policy->save();
+
+        $claims = DB::table('claims')
+        ->select('*')
+        ->where('customer_id', '=', $policy->customer_id)
+        ->get();
+
+        if ($claims->count() >= 1) {
+            $policy->premium_amount = round($policy->premium_amount * 1.10);
+            $policy->excess_amount = round($policy->excess_amount * 1.10);
+            $policy->save();
+            $policy->balance = $policy->premium_amount;
+            $policy->save();
+
+            error_log('Premium increased by 10%');
+            return redirect()->route('activepolicies')->with('success', 'Policy Renewed Successfully.
+            Premium and Excess amounts are increased by 10%');
+
+
+        } else {
+            error_log('Premium amount remains the same');
+        }
+
+        return redirect()->route('activepolicies')->with('success', 'Policy Renewed Successfully');
+    }
+    public function cancel_policy($id)
+    {
+        $policy = CustomerPolicy::findOrFail($id);
+        $policy->status = 'Canceled';
+        $policy->save();
+
+        return redirect()->route('activepolicies')->with('success', 'Policy Canceled Successfully');
     }
 
     public function destroy($id)

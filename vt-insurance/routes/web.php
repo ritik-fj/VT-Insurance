@@ -72,6 +72,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/reject_request/{id}', [UpgradeRequestsController::class, 'reject_request'])->name('request.reject');
         Route::get('/reports/{customer_id}/customerdetails', [CustomerPoliciesController::class, 'customerdetailsPDF'])->name('customerdetails.pdf');
         Route::get('/allpayments', [PaymentsController::class, 'index'])->name('admin.viewpayments');
+        Route::get('/renew_policy/{id}', [CustomerPoliciesController::class, 'renew_policy'])->name('policy.renew');
+        Route::get('/cancel_policy/{id}', [CustomerPoliciesController::class, 'cancel_policy'])->name('policy.cancel');
+
     });
 
 

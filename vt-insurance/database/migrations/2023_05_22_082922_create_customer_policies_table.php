@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('policy_duration');
             $table->string('description');
             $table->string('balance');
+            $table->string('status')->default('Active');
+
             $table->timestamps();
 
             $table->foreign('customer_id')->references('id')->on('users')->cascadeOnDelete();

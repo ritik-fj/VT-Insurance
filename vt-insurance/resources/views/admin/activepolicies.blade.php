@@ -61,6 +61,8 @@
                                     <th>Excess Amount</th>
                                     <th>Policy Duration</th>
                                     <th>Balance</th>
+                                    <th>Status</th>
+                                    <th></th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -76,6 +78,17 @@
                                         <td>${{ $policy->excess_amount }}</td>
                                         <td>{{ $policy->policy_duration }}</td>
                                         <td>${{ $policy->balance }}</td>
+                                        <td>{{ $policy->status }}</td>
+
+                                        <td class="text-center">
+                                            <a class="btn btn-sm btn-success m-1"
+                                                href="{{ route('policy.renew', $policy->id) }}">
+                                                Renew Policy</a>
+                                            <a class="btn btn-sm btn-danger "
+                                                href="{{ route('policy.cancel', $policy->id) }}">
+                                                Cancel Policy</a>
+
+                                        </td>
 
 
                                         <td class="text-center">
@@ -89,7 +102,7 @@
                                                     type="submit" class="btn btn-danger btn-sm">Delete</button><br>
                                             </form>
                                             <a href="{{ route('customer_policy.edit', $policy->id) }}"
-                                                class="btn btn-primary m-1">Edit Policy</a>
+                                                class="btn btn-primary m-1">Edit</a>
                                         </td>
                                     </tr>
                                 @endforeach
