@@ -18,6 +18,8 @@
                         <h1 class="display-6 text-center">Welcome to the Customer Dashboard</h1>
                     </div>
 
+                    <a name="" id="" class="btn btn-primary" href="{{ route('myreport') }}" role="button">Download YOur Detailed Report</a>
+
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">

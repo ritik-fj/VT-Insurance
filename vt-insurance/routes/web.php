@@ -92,8 +92,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/storepayment', [PaymentsController::class, 'storepayment'])->name('payment.store');
         Route::get('/mypayments', [PaymentsController::class, 'mypayments'])->name('customer.mypayments');
         Route::get('/payments-pdf', [PaymentsController::class, 'paymentsPDF'])->name('customer.paymentspdf');
-
-
+        Route::get('/reports/myreport', [CustomerDashboardController::class, 'myreport'])->name('myreport');
 
 
         // Add more customer routes here
