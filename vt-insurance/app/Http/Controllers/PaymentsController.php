@@ -70,14 +70,24 @@ class PaymentsController extends Controller
             ->where('id', '=', Auth::id())
             ->first();
 
-        $payments = DB::table('payments')
+            $payments = DB::table('payments')
+            ->join('customer_policies', 'payments.policy_id', '=', 'customer_policies.id')
+            ->select('payments.*', 'customer_policies.policy_type', 'customer_policies.balance')
+            ->where('payments.customer_id', '=', Auth::id())
+            ->get();
+
+            $policies = DB::table('customer_policies')
             ->select('*')
             ->where('customer_id', '=', Auth::id())
             ->get();
 
-        $pdf = app('dompdf.wrapper')->loadView('reports.mypayments', compact('customers',  'payments'));
+            $balance = $payments->sum('balance');
+
+
+        $pdf = app('dompdf.wrapper')->loadView('reports.mypayments', compact('customers',  'payments','balance','policies'));
 
         return $pdf->download('payments.pdf');
+
     }
 
     /**

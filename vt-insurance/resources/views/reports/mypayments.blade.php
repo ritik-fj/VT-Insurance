@@ -8,6 +8,7 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
             margin: 0;
+            font-size: 11px;
             padding: 0;
         }
 
@@ -45,6 +46,7 @@
         td {
             border: 1px solid black;
             padding: 10px;
+            font-size: 10px;
         }
 
         th {
@@ -77,7 +79,7 @@
 
 <body>
     <h1>VT Insurance</h1>
-    <h2>Customer Report</h2>
+    <h2>Customer Payments Report</h2>
     <hr>
     <h3>Customer Information</h3>
     <p>
@@ -98,8 +100,9 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Payment ID</th>
                     <th>Policy ID</th>
+                    <th>Policy Type</th>
                     <th>Amount Paid</th>
                     <th>Payment Date</th>
                 </tr>
@@ -109,17 +112,45 @@
                     <tr>
                         <td>{{ $payment->id }}</td>
                         <td>{{ $payment->policy_id }}</td>
+                        <td>{{ $payment->policy_type}}</td>
                         <td>${{ $payment->amount_paid }}</td>
                         <td>{{ $payment->created_at }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        <strong>Remaining Balance: ${{$balance}}</strong>
     @else
         <p>There are no claims made by this customer.</p>
     @endif
 
     <br>
+    <hr>
+    <h3>Your Current Policies</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Policy ID</th>
+                <th>Policy Type</th>
+                <th>Coverage Amount</th>
+                <th>Premium Amount</th>
+                <th>Excess Amount</th>
+                <th>Policy Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($policies as $policy)
+                <tr>
+                    <td>{{ $policy->id }}</td>
+                    <td>{{ $policy->policy_type }}</td>
+                    <td>${{ $policy->coverage_amount }}</td>
+                    <td>${{ $policy->premium_amount }}</td>
+                    <td>${{ $policy->excess_amount }}</td>
+                    <td>{{ $policy->policy_duration }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 
     <hr>
     <div class="footer">
