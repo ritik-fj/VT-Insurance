@@ -78,6 +78,13 @@ class CustomerPoliciesController extends Controller
             ->where('customer_policies.customer_id', '=', $customer_id)
             ->get();
 
+        $payments = DB::table('payments')
+            ->select('*')
+            ->where('customer_id', '=', $customer_id)
+            ->get();
+
+        $balance = $policies->sum('balance');
+
         // calculate the total coverage amount
         $totalCoverageAmount = $policies->sum('coverage_amount');
 
@@ -96,7 +103,7 @@ class CustomerPoliciesController extends Controller
 
 
         $pdf = app('dompdf.wrapper')
-            ->loadView('reports.customerdetails', compact('customers',  'policies', 'totalCoverageAmount', 'totalPremiumAmount', 'totalExcessAmount', 'discountedpremium', 'claims'));
+            ->loadView('reports.customerdetails', compact('customers', 'balance', 'payments', 'policies', 'totalCoverageAmount', 'totalPremiumAmount', 'totalExcessAmount', 'discountedpremium', 'claims'));
 
         return $pdf->download('customersdetails.pdf');
     }

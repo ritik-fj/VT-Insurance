@@ -45,6 +45,8 @@
         td {
             border: 1px solid black;
             padding: 10px;
+            font-size: 10px;
+
         }
 
         th {
@@ -128,6 +130,33 @@
         <p>No policies found for this customer.</p>
     @endif
 
+    <hr>
+    <h3>Customer Payments</h3>
+    @if ($payments->count() > 0)
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Payment ID</th>
+                    <th>Policy ID</th>
+                    <th>Amount Paid</th>
+                    <th>Payment Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($payments as $payment)
+                    <tr>
+                        <td>{{ $payment->id }}</td>
+                        <td>{{ $payment->policy_id }}</td>
+                        <td>${{ $payment->amount_paid }}</td>
+                        <td>{{ $payment->created_at }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        <strong>Remaining Balance: ${{ $balance }}</strong>
+    @else
+        <p>There are no payments made by this customer.</p>
+    @endif
     <hr>
 
     <h3>Customer's Claims</h3>

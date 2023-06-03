@@ -121,7 +121,7 @@
         </table>
         <strong>Remaining Balance: ${{$balance}}</strong>
     @else
-        <p>There are no claims made by this customer.</p>
+        <p>There are no payments made by this customer.</p>
     @endif
 
     <br>
